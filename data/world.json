@@ -1,0 +1,12 @@
+{
+  "day": 1,
+  "planet": "Mars",
+  "city": "Ares Alpha",
+  "population": 20,
+  "energy": 82,
+  "water": 77,
+  "food": 91,
+  "technology": 34,
+  "cq": 0.42,
+  "history": []
+}
