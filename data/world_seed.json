@@ -1,0 +1,14 @@
+{
+  "seed": "ARES-ALPHA-001",
+  "scenario": "Mars Awakening",
+  "year": 2135,
+  "civilization_seed": "Explorer",
+  "random_seed": 20260707,
+  "initial_conditions": {
+    "energy": [70,90],
+    "water": [70,90],
+    "food": [80,95],
+    "technology": 34,
+    "population": 20
+  }
+}
