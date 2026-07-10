@@ -22,8 +22,9 @@ const defaultHistory = { count: 0, items: [] };
 const apiBase =
   process.env.API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_BASE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
   "http://localhost:8000";
-const clientApiBase = process.env.NEXT_PUBLIC_API_BASE_URL || apiBase;
+const clientApiBase = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
 async function fetchJson<T>(path: string, fallback: T): Promise<T> {
   try {
