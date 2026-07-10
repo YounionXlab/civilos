@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "installCommand": "cd apps/web && npm install",
+  "buildCommand": "cd apps/web && npm run build",
+  "outputDirectory": "apps/web/.next",
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.12"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/world",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/agents",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/history",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/tick",
+      "destination": "/api/index.py"
+    }
+  ]
+}

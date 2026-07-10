@@ -1,13 +1,12 @@
 from fastapi import APIRouter
-import json
-from pathlib import Path
+
+from apps.api.models import AgentsResponse
+from packages.engine.storage import Storage
 
 router = APIRouter()
-ROOT = Path(__file__).resolve().parents[3]
-AGENTS = ROOT / 'data' / 'agents.json'
 
-@router.get('/agents')
+
+@router.get("/agents", response_model=AgentsResponse)
 def get_agents():
-    with open(AGENTS,'r',encoding='utf-8') as f:
-        agents = json.load(f)
-    return {'count': len(agents), 'items': agents}
+    agents = Storage.load_agents()
+    return {"count": len(agents), "items": agents}

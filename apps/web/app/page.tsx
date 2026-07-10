@@ -1,19 +1,103 @@
+import TickButton from "../components/TickButton";
+import WorldCard from "../components/WorldCard";
+import type { World } from "../components/WorldCard";
+
+type Agent = {
+  id: string;
+  name: string;
+  role: string;
+  needs?: Record<string, number>;
+  goals?: string[];
+};
+
+type HistoryItem = {
+  day: number;
+  title: string;
+  deltas?: Record<string, number>;
+};
+
+const defaultAgents = { count: 0, items: [] };
+const defaultHistory = { count: 0, items: [] };
+
+const apiBase =
+  process.env.API_BASE_URL ||
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  "http://localhost:8000";
+const clientApiBase = process.env.NEXT_PUBLIC_API_BASE_URL || apiBase;
+
+async function fetchJson<T>(path: string, fallback: T): Promise<T> {
+  try {
+    const response = await fetch(`${apiBase}${path}`, { cache: "no-store" });
+    if (!response.ok) {
+      return fallback;
+    }
+    return response.json();
+  } catch {
+    return fallback;
+  }
+}
+
 export default async function Home() {
-  const res = await fetch('http://localhost:8000/world', { cache: 'no-store' }).catch(() => null)
-  const world = res ? await res.json() : null
+  const [world, agents, history] = await Promise.all([
+    fetchJson<World | null>("/world", null),
+    fetchJson<{ count: number; items: Agent[] }>("/agents", defaultAgents),
+    fetchJson<{ count: number; items: HistoryItem[] }>("/history", defaultHistory),
+  ]);
 
   return (
-    <main style={{padding:40,fontFamily:'sans-serif'}}>
-      <h1>🌍 CivilOS · Ares Alpha</h1>
+    <main className="dashboard">
+      <header className="topbar">
+        <div>
+          <p className="eyebrow">CivilOS Alpha 0.1</p>
+          <h1>{world ? world.city : "CivilOS"} Operations</h1>
+        </div>
+        <TickButton apiBase={clientApiBase} />
+      </header>
+
       {world ? (
-        <>
-          <p>Day {world.day}</p>
-          <p>Population: {world.population}</p>
-          <p>Energy: {world.energy}%</p>
-          <p>Water: {world.water}%</p>
-          <p>Food: {world.food}%</p>
-        </>
-      ) : <p>Waiting for API...</p>}
+        <div className="dashboard-grid">
+          <WorldCard world={world} />
+
+          <section className="panel">
+            <h2>Citizens</h2>
+            <div className="agent-list">
+              {agents.items.map((agent) => (
+                <article className="agent-card" key={agent.id}>
+                  <div>
+                    <h3>{agent.name}</h3>
+                    <p>{agent.role}</p>
+                  </div>
+                  {agent.goals?.[0] ? <p>{agent.goals[0]}</p> : null}
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="panel history-panel">
+            <h2>History</h2>
+            {history.items.length > 0 ? (
+              <ol className="history-list">
+                {history.items
+                  .slice()
+                  .reverse()
+                  .map((item) => (
+                    <li key={`${item.day}-${item.title}`}>
+                      <span>Day {item.day}</span>
+                      <p>{item.title}</p>
+                    </li>
+                  ))}
+              </ol>
+            ) : (
+              <p className="muted">No recorded history yet.</p>
+            )}
+          </section>
+        </div>
+      ) : (
+        <section className="panel">
+          <h2>API Offline</h2>
+          <p className="muted">Start the FastAPI service to load the civilization state.</p>
+        </section>
+      )}
     </main>
-  )
+  );
 }
