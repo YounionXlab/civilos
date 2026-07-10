@@ -7,4 +7,4 @@ router = APIRouter()
 
 @router.get("/world")
 def get_world():
-    return Storage.load("world", default={})
+    return Storage.load_world()

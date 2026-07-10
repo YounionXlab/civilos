@@ -1,17 +1,18 @@
 from fastapi import APIRouter
 
-from packages.engine.simulation import load_agents, load_world, save_agents, save_world, tick
+from packages.engine.simulation import tick
+from packages.engine.storage import Storage
 
 router = APIRouter()
 
 
 @router.post("/tick")
 def advance_one_day():
-    world = load_world()
-    agents = load_agents()
+    world = Storage.load_world()
+    agents = Storage.load_agents()
     updated = tick(world, agents)
-    save_world(updated)
-    save_agents(agents)
+    Storage.save_world(updated)
+    Storage.save_agents(agents)
     return {
         "message": "Civilization advanced by one day.",
         "day": updated["day"],

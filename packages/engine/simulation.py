@@ -3,19 +3,19 @@ from .storage import Storage
 
 
 def load_world():
-    return Storage.load("world", default={})
+    return Storage.load_world()
 
 
 def save_world(world):
-    Storage.save("world", world)
+    Storage.save_world(world)
 
 
 def load_agents():
-    return Storage.load("agents", default=[])
+    return Storage.load_agents()
 
 
 def save_agents(agents):
-    Storage.save("agents", agents)
+    Storage.save_agents(agents)
 
 
 def clamp(value, minimum=0, maximum=100):
@@ -33,14 +33,16 @@ def agent_contribution(agent):
 
 def update_agent(agent, world):
     needs = agent.setdefault("needs", {})
-    resource_pressure = (world["energy"] + world["water"] + world["food"]) / 300
+    resource_pressure = (
+        world.get("energy", 0) + world.get("water", 0) + world.get("food", 0)
+    ) / 300
     needs["energy"] = round(clamp(needs.get("energy", 0.6) - 0.04 + resource_pressure * 0.03, 0, 1), 2)
     needs["rest"] = round(clamp(needs.get("rest", 0.6) - 0.03, 0, 1), 2)
     needs["social"] = round(clamp(needs.get("social", 0.5) + world.get("cq", 0.4) * 0.02, 0, 1), 2)
     agent.setdefault("memories", []).append(
         {
             "day": world["day"],
-            "summary": f"Worked through day {world['day']} in {world['city']}.",
+            "summary": f"Worked through day {world['day']} in {world.get('city', 'the colony')}.",
         }
     )
     agent["memories"] = agent["memories"][-10:]

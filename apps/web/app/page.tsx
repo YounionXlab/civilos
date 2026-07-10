@@ -16,6 +16,9 @@ type HistoryItem = {
   deltas?: Record<string, number>;
 };
 
+const defaultAgents = { count: 0, items: [] };
+const defaultHistory = { count: 0, items: [] };
+
 const apiBase =
   process.env.API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_BASE_URL ||
@@ -37,8 +40,8 @@ async function fetchJson<T>(path: string, fallback: T): Promise<T> {
 export default async function Home() {
   const [world, agents, history] = await Promise.all([
     fetchJson<World | null>("/world", null),
-    fetchJson<{ count: number; items: Agent[] }>("/agents", { count: 0, items: [] }),
-    fetchJson<{ count: number; items: HistoryItem[] }>("/history", { count: 0, items: [] }),
+    fetchJson<{ count: number; items: Agent[] }>("/agents", defaultAgents),
+    fetchJson<{ count: number; items: HistoryItem[] }>("/history", defaultHistory),
   ]);
 
   return (
@@ -64,7 +67,7 @@ export default async function Home() {
                     <h3>{agent.name}</h3>
                     <p>{agent.role}</p>
                   </div>
-                  <p>{agent.goals?.[0] || "Maintain colony stability"}</p>
+                  {agent.goals?.[0] ? <p>{agent.goals[0]}</p> : null}
                 </article>
               ))}
             </div>

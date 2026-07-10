@@ -7,5 +7,5 @@ router = APIRouter()
 
 @router.get("/agents")
 def get_agents():
-    agents = Storage.load("agents", default=[])
+    agents = Storage.load_agents()
     return {"count": len(agents), "items": agents}
