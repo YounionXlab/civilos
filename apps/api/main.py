@@ -6,6 +6,7 @@ from apps.api.routes.agents import router as agents_router
 from apps.api.routes.history import router as history_router
 from apps.api.routes.tick import router as tick_router
 from apps.api.routes.world import router as world_router
+from apps.api.models import HealthResponse
 from packages.engine.storage import StorageError
 
 app = FastAPI(title="CivilOS API", version="0.1.0")
@@ -32,6 +33,6 @@ def storage_error_handler(_: Request, exc: StorageError):
     )
 
 
-@app.get("/")
+@app.get("/", response_model=HealthResponse)
 def health_check():
     return {"name": "CivilOS API", "version": "0.1.0", "status": "online"}

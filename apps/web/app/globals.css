@@ -67,6 +67,18 @@ button {
   opacity: 0.7;
 }
 
+.tick-control {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.error-text {
+  color: #9f2d20;
+  font-size: 13px;
+  margin: 0;
+}
+
 .dashboard-grid {
   display: grid;
   gap: 18px;
@@ -80,6 +92,11 @@ button {
   border: 1px solid #ded9cc;
   border-radius: 8px;
   padding: 20px;
+}
+
+.state-panel {
+  margin: 0 auto;
+  max-width: 720px;
 }
 
 .world-panel {

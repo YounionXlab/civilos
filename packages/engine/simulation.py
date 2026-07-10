@@ -18,6 +18,15 @@ def save_agents(agents):
     Storage.save_agents(agents)
 
 
+def advance_one_day():
+    world = load_world()
+    agents = load_agents()
+    updated = tick(world, agents)
+    save_world(updated)
+    save_agents(agents)
+    return updated, agents
+
+
 def clamp(value, minimum=0, maximum=100):
     return max(minimum, min(maximum, value))
 
