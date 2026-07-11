@@ -32,7 +32,7 @@ async function fetchJson<T>(path: string, fallback: T): Promise<T> {
     if (!response.ok) {
       return fallback;
     }
-    return response.json();
+    return await response.json();
   } catch {
     return fallback;
   }
