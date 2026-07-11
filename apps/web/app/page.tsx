@@ -1,23 +1,24 @@
+import CitizenPanel from "../components/CitizenPanel";
+import type { Citizen } from "../components/CitizenPanel";
 import TickButton from "../components/TickButton";
 import WorldCard from "../components/WorldCard";
 import type { World } from "../components/WorldCard";
 
-type Agent = {
-  id: string;
-  name: string;
-  role: string;
-  needs?: Record<string, number>;
-  goals?: string[];
-};
-
-type HistoryItem = {
+type ChronicleEvent = {
   day: number;
   title: string;
-  deltas?: Record<string, number>;
+  description: string;
+  impact: Record<string, number>;
 };
 
-const defaultAgents = { count: 0, items: [] };
-const defaultHistory = { count: 0, items: [] };
+type ApiResponse<T> = {
+  status: string;
+  message: string;
+  data: T;
+};
+
+const defaultCitizens = { count: 0, items: [] as Citizen[] };
+const defaultHistory = { count: 0, items: [] as ChronicleEvent[] };
 
 const apiBase =
   process.env.API_BASE_URL ||
@@ -29,30 +30,31 @@ const apiBase =
   "http://localhost:8000";
 const clientApiBase = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
-async function fetchJson<T>(path: string, fallback: T): Promise<T> {
+async function fetchData<T>(path: string, fallback: T): Promise<T> {
   try {
     const response = await fetch(`${apiBase}${path}`, { cache: "no-store" });
     if (!response.ok) {
       return fallback;
     }
-    return await response.json();
+    const payload = (await response.json()) as ApiResponse<T>;
+    return payload.data;
   } catch {
     return fallback;
   }
 }
 
 export default async function Home() {
-  const [world, agents, history] = await Promise.all([
-    fetchJson<World | null>("/world", null),
-    fetchJson<{ count: number; items: Agent[] }>("/agents", defaultAgents),
-    fetchJson<{ count: number; items: HistoryItem[] }>("/history", defaultHistory),
+  const [world, citizens, history] = await Promise.all([
+    fetchData<World | null>("/world", null),
+    fetchData("/agents", defaultCitizens),
+    fetchData("/history", defaultHistory),
   ]);
 
   return (
     <main className="dashboard">
       <header className="topbar">
         <div>
-          <p className="eyebrow">CivilOS Alpha 0.1</p>
+          <p className="eyebrow">CivilOS Alpha 0.2</p>
           <h1>{world ? world.city : "CivilOS"} Operations</h1>
         </div>
         <TickButton apiBase={clientApiBase} />
@@ -61,43 +63,32 @@ export default async function Home() {
       {world ? (
         <div className="dashboard-grid">
           <WorldCard world={world} />
-
-          <section className="panel">
-            <h2>Citizens</h2>
-            <div className="agent-list">
-              {agents.items.map((agent) => (
-                <article className="agent-card" key={agent.id}>
-                  <div>
-                    <h3>{agent.name}</h3>
-                    <p>{agent.role}</p>
-                  </div>
-                  {agent.goals?.[0] ? <p>{agent.goals[0]}</p> : null}
-                </article>
-              ))}
-            </div>
-          </section>
+          <CitizenPanel citizens={citizens.items} />
 
           <section className="panel history-panel">
-            <h2>History</h2>
+            <h2>Civilization Chronicle</h2>
             {history.items.length > 0 ? (
               <ol className="history-list">
-                {history.items
-                  .slice()
-                  .reverse()
-                  .map((item) => (
-                    <li key={`${item.day}-${item.title}`}>
-                      <span>Day {item.day}</span>
-                      <p>{item.title}</p>
-                    </li>
-                  ))}
+                {history.items.map((item) => (
+                  <li key={`${item.day}-${item.title}`}>
+                    <span>Day {item.day}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <p className="event-impact">
+                      {Object.entries(item.impact)
+                        .map(([resource, change]) => `${resource} ${change > 0 ? "+" : ""}${change}`)
+                        .join(" · ")}
+                    </p>
+                  </li>
+                ))}
               </ol>
             ) : (
-              <p className="muted">No recorded history yet.</p>
+              <p className="muted">Advance one day to begin the civilization chronicle.</p>
             )}
           </section>
         </div>
       ) : (
-        <section className="panel">
+        <section className="panel state-panel">
           <h2>API Offline</h2>
           <p className="muted">Start the FastAPI service to load the civilization state.</p>
         </section>

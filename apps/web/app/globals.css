@@ -79,6 +79,12 @@ button {
   margin: 0;
 }
 
+.tick-status {
+  color: #5c635f;
+  font-size: 13px;
+  margin: 0;
+}
+
 .dashboard-grid {
   display: grid;
   gap: 18px;
@@ -157,11 +163,23 @@ button {
 }
 
 .agent-card {
+  background: transparent;
   border: 1px solid #ebe4d7;
   border-radius: 8px;
   display: grid;
   gap: 10px;
   padding: 14px;
+  text-align: left;
+  width: 100%;
+}
+
+button.agent-card {
+  cursor: pointer;
+}
+
+.agent-card[aria-pressed="true"],
+.agent-card:hover {
+  border-color: #1f5f4a;
 }
 
 .agent-card p {
@@ -174,6 +192,8 @@ button {
 }
 
 .history-list {
+  max-height: 420px;
+  overflow-y: auto;
   list-style: none;
   padding: 0;
 }
@@ -187,6 +207,57 @@ button {
   color: #5c635f;
   font-size: 13px;
   font-weight: 700;
+}
+
+.history-list h3 {
+  font-size: 15px;
+  margin: 4px 0 0;
+}
+
+.event-impact {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.citizen-detail {
+  border-top: 1px solid #ebe4d7;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.detail-heading {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-heading h3 {
+  margin: 0;
+}
+
+.text-action {
+  background: transparent;
+  border: 0;
+  color: #1f5f4a;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.detail-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 16px 0 0;
+}
+
+.detail-grid dt {
+  color: #5c635f;
+  font-size: 12px;
+}
+
+.detail-grid dd {
+  margin: 4px 0 0;
 }
 
 .history-list p,
