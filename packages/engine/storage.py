@@ -1,8 +1,12 @@
 import json
+import os
+import shutil
 from pathlib import Path
 from typing import Any
 
-DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+BUNDLED_DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+USE_BUNDLED_SEED = bool(os.environ.get("VERCEL"))
+DATA_DIR = Path("/tmp/civilos") if USE_BUNDLED_SEED else BUNDLED_DATA_DIR
 
 
 class StorageError(RuntimeError):
@@ -19,6 +23,14 @@ class Storage:
     @staticmethod
     def load(name: str, default: Any = None) -> Any:
         path = Storage._path(name)
+        if not path.exists() and USE_BUNDLED_SEED:
+            bundled_path = BUNDLED_DATA_DIR / path.name
+            if bundled_path.exists():
+                try:
+                    DATA_DIR.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(bundled_path, path)
+                except OSError as exc:
+                    raise StorageError(f"Unable to initialize storage file: {name}") from exc
         if not path.exists():
             return default
         try:
@@ -34,7 +46,7 @@ class Storage:
         path = Storage._path(name)
         temporary_path = path.with_suffix(".json.tmp")
         try:
-            DATA_DIR.mkdir(exist_ok=True)
+            DATA_DIR.mkdir(parents=True, exist_ok=True)
             with temporary_path.open("w", encoding="utf-8") as file:
                 json.dump(data, file, ensure_ascii=False, indent=2)
                 file.write("\n")
