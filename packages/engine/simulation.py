@@ -1,74 +1,62 @@
-from .events import event_for_world
+from typing import Any
+
+from .events import chronicle_event
 from .storage import Storage
 
 
-def load_world():
-    return Storage.load_world()
-
-
-def save_world(world):
-    Storage.save_world(world)
-
-
-def load_agents():
-    return Storage.load_agents()
-
-
-def save_agents(agents):
-    Storage.save_agents(agents)
-
-
-def advance_one_day():
-    world = load_world()
-    agents = load_agents()
-    updated = tick(world, agents)
-    save_world(updated)
-    save_agents(agents)
-    return updated, agents
-
-
-def clamp(value, minimum=0, maximum=100):
+def clamp(value: float, minimum: float = 0, maximum: float = 100) -> float:
     return max(minimum, min(maximum, value))
 
 
-def agent_contribution(agent):
-    role = agent.get("role", "").lower()
-    if "fusion" in role:
+def agent_contribution(agent: dict[str, Any]) -> dict[str, float]:
+    profession = agent.get("profession", agent.get("role", "")).lower()
+    if "fusion" in profession:
         return {"energy": 3, "technology": 1}
-    if "botanist" in role:
+    if "botanist" in profession:
         return {"food": 3, "water": -1}
     return {"cq": 0.01}
 
 
-def update_agent(agent, world):
-    needs = agent.setdefault("needs", {})
-    resource_pressure = (
-        world.get("energy", 0) + world.get("water", 0) + world.get("food", 0)
-    ) / 300
-    needs["energy"] = round(clamp(needs.get("energy", 0.6) - 0.04 + resource_pressure * 0.03, 0, 1), 2)
-    needs["rest"] = round(clamp(needs.get("rest", 0.6) - 0.03, 0, 1), 2)
-    needs["social"] = round(clamp(needs.get("social", 0.5) + world.get("cq", 0.4) * 0.02, 0, 1), 2)
-    agent.setdefault("memories", []).append(
-        {
-            "day": world["day"],
-            "summary": f"Worked through day {world['day']} in {world.get('city', 'the colony')}.",
-        }
+def normalize_agent(agent: dict[str, Any]) -> None:
+    agent["profession"] = agent.get("profession", agent.pop("role", "Citizen"))
+    legacy_goals = agent.pop("goals", [])
+    agent["goal"] = agent.get("goal", legacy_goals[0] if legacy_goals else "Support the colony")
+    legacy_energy = agent.get("needs", {}).get("energy", 0.7) * 100
+    agent["energy"] = int(agent.get("energy", legacy_energy))
+    agent.setdefault("mood", "steady")
+    agent.setdefault("current_task", "Review colony systems")
+    agent.setdefault("last_log", "Ready for the next simulation day.")
+
+
+def update_agent(agent: dict[str, Any], world: dict[str, Any], index: int) -> None:
+    normalize_agent(agent)
+    day = int(world["day"])
+    profession = agent["profession"].lower()
+    tasks = (
+        ["Calibrate fusion controls", "Review reactor telemetry", "Inspect power conduits"]
+        if "fusion" in profession
+        else ["Monitor greenhouse crops", "Test nutrient balance", "Prepare the next harvest"]
     )
-    agent["memories"] = agent["memories"][-10:]
-    return agent
+    agent["current_task"] = tasks[(day + index) % len(tasks)]
+    agent["energy"] = int(clamp(agent["energy"] - 6 + (day + index) % 4, 0, 100))
+    if agent["energy"] >= 65:
+        agent["mood"] = "focused"
+    elif agent["energy"] >= 40:
+        agent["mood"] = "steady"
+    else:
+        agent["mood"] = "tired"
+    agent["last_log"] = (
+        f"Day {day}: {agent['current_task']}. Energy is {agent['energy']} and mood is {agent['mood']}."
+    )
 
 
-def tick(world, agents=None):
+def apply_impact(world: dict[str, Any], impact: dict[str, float]) -> None:
+    for key, value in impact.items():
+        world[key] = round(world.get(key, 0) + value, 2)
+
+
+def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     agents = agents or []
-    previous = {
-        "population": world.get("population", 0),
-        "energy": world.get("energy", 0),
-        "water": world.get("water", 0),
-        "food": world.get("food", 0),
-        "technology": world.get("technology", 0),
-        "cq": world.get("cq", 0),
-    }
-
     world["day"] = world.get("day", 0) + 1
     world["energy"] = world.get("energy", 0) - 4
     world["water"] = world.get("water", 0) - 2
@@ -78,42 +66,31 @@ def tick(world, agents=None):
         for key, value in agent_contribution(agent).items():
             world[key] = world.get(key, 0) + value
 
+    event = chronicle_event(world, agents)
+    apply_impact(world, event["impact"])
+
     scarcity_count = sum(1 for key in ("energy", "water", "food") if world.get(key, 0) < 35)
     world["cq"] = round(clamp(world.get("cq", 0.4) + 0.01 - scarcity_count * 0.03, 0, 1), 2)
-    world["technology"] = clamp(world.get("technology", 0), 0, 100)
-    world["energy"] = clamp(world.get("energy", 0), 0, 100)
-    world["water"] = clamp(world.get("water", 0), 0, 100)
-    world["food"] = clamp(world.get("food", 0), 0, 100)
+    for key in ("technology", "energy", "water", "food"):
+        world[key] = clamp(world.get(key, 0), 0, 100)
 
     if scarcity_count >= 2:
         world["population"] = max(0, world.get("population", 0) - 1)
     elif world["food"] > 80 and world["water"] > 70 and world["cq"] > 0.55:
         world["population"] = world.get("population", 0) + 1
 
-    for agent in agents:
-        update_agent(agent, world)
+    for index, agent in enumerate(agents):
+        update_agent(agent, world, index)
 
-    deltas = {
-        key: round(world.get(key, 0) - previous[key], 2)
-        for key in previous
-        if world.get(key, 0) != previous[key]
-    }
-    world.setdefault("history", []).append(
-        {
-            "day": world["day"],
-            "title": event_for_world(world),
-            "deltas": deltas,
-            "population": world.get("population", 0),
-            "cq": world.get("cq", 0),
-        }
-    )
+    world.setdefault("history", []).append(event)
     world["history"] = world["history"][-100:]
     return world
 
 
-if __name__ == "__main__":
-    w = load_world()
-    a = load_agents()
-    save_world(tick(w, a))
-    save_agents(a)
-    print(f"Day {w['day']} complete")
+def advance_one_day() -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    world = Storage.load_world()
+    agents = Storage.load_agents()
+    updated_world = tick(world, agents)
+    Storage.save_world(updated_world)
+    Storage.save_agents(agents)
+    return updated_world, agents
