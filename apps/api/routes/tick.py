@@ -15,6 +15,6 @@ def advance_one_day():
         "data": {
             "day": updated["day"],
             "world": updated,
-            "agents": {"count": len(agents), "items": agents},
+            "citizens": {"count": len(agents), "items": agents},
         },
     }

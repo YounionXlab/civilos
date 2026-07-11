@@ -10,4 +10,8 @@ router = APIRouter()
 def get_history(limit: int = Query(default=30, ge=1, le=100)):
     world = Storage.load_world()
     history = world.get("history", [])
-    return {"items": history[-limit:], "count": len(history)}
+    return {
+        "status": "ok",
+        "message": "Civilization chronicle loaded.",
+        "data": {"items": list(reversed(history[-limit:])), "count": len(history)},
+    }

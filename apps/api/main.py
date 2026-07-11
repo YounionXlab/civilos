@@ -35,4 +35,8 @@ def storage_error_handler(_: Request, exc: StorageError):
 
 @app.get("/", response_model=HealthResponse)
 def health_check():
-    return {"name": "CivilOS API", "version": "0.1.0", "status": "online"}
+    return {
+        "status": "ok",
+        "message": "CivilOS API is online.",
+        "data": {"name": "CivilOS API", "version": "0.2.0"},
+    }

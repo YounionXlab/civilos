@@ -28,9 +28,12 @@ def seed_storage(tmp_path):
           {
             "id": "lin_yuan",
             "name": "Lin Yuan",
-            "role": "Fusion Engineer",
-            "needs": {},
-            "goals": [],
+            "profession": "Fusion Engineer",
+            "goal": "Upgrade Fusion Reactor",
+            "mood": "focused",
+            "energy": 80,
+            "current_task": "Review reactor telemetry",
+            "last_log": "Ready.",
             "memories": []
           }
         ]
@@ -49,11 +52,11 @@ def test_read_routes_return_response_models(tmp_path, monkeypatch):
     history = client.get("/history")
 
     assert world.status_code == 200
-    assert world.json()["city"] == "Ares Alpha"
+    assert world.json()["data"]["city"] == "Ares Alpha"
     assert agents.status_code == 200
-    assert agents.json()["count"] == 1
+    assert agents.json()["data"]["count"] == 1
     assert history.status_code == 200
-    assert history.json() == {"count": 0, "items": []}
+    assert history.json()["data"] == {"count": 0, "items": []}
 
 
 def test_tick_uses_consistent_response_schema_and_mutates_state(tmp_path, monkeypatch):
@@ -68,5 +71,6 @@ def test_tick_uses_consistent_response_schema_and_mutates_state(tmp_path, monkey
     assert payload["status"] == "ok"
     assert payload["data"]["day"] == 2
     assert payload["data"]["world"]["day"] == 2
-    assert payload["data"]["agents"]["count"] == 1
-    assert client.get("/world").json()["day"] == 2
+    assert payload["data"]["citizens"]["count"] == 1
+    assert client.get("/world").json()["data"]["day"] == 2
+    assert client.get("/history").json()["data"]["count"] == 1

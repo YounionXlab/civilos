@@ -3,37 +3,36 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 
-class AgentModel(BaseModel):
+class CitizenModel(BaseModel):
     id: str
     name: str
-    role: str
-    age: int | None = None
-    traits: list[str] = Field(default_factory=list)
-    needs: dict[str, float] = Field(default_factory=dict)
-    goals: list[str] = Field(default_factory=list)
+    profession: str
+    goal: str
+    mood: str
+    energy: int = Field(ge=0, le=100)
+    current_task: str
+    last_log: str
     memories: list[dict[str, Any]] = Field(default_factory=list)
-    relationships: dict[str, Any] = Field(default_factory=dict)
 
 
-class AgentsResponse(BaseModel):
+class CitizensData(BaseModel):
     count: int
-    items: list[AgentModel]
+    items: list[CitizenModel]
 
 
-class HistoryItem(BaseModel):
+class ChronicleEvent(BaseModel):
     day: int
     title: str
-    deltas: dict[str, float | int] = Field(default_factory=dict)
-    population: int | None = None
-    cq: float | None = None
+    description: str
+    impact: dict[str, float | int] = Field(default_factory=dict)
 
 
-class HistoryResponse(BaseModel):
+class HistoryData(BaseModel):
     count: int
-    items: list[HistoryItem]
+    items: list[ChronicleEvent]
 
 
-class WorldResponse(BaseModel):
+class WorldData(BaseModel):
     day: int = 0
     planet: str = ""
     city: str = ""
@@ -43,13 +42,31 @@ class WorldResponse(BaseModel):
     food: int | float = 0
     technology: int | float = 0
     cq: float = 0
-    history: list[HistoryItem] = Field(default_factory=list)
+    history: list[ChronicleEvent] = Field(default_factory=list)
+
+
+class WorldResponse(BaseModel):
+    status: str
+    message: str
+    data: WorldData
+
+
+class CitizensResponse(BaseModel):
+    status: str
+    message: str
+    data: CitizensData
+
+
+class HistoryResponse(BaseModel):
+    status: str
+    message: str
+    data: HistoryData
 
 
 class TickData(BaseModel):
     day: int
-    world: WorldResponse
-    agents: AgentsResponse
+    world: WorldData
+    citizens: CitizensData
 
 
 class TickResponse(BaseModel):
@@ -58,7 +75,12 @@ class TickResponse(BaseModel):
     data: TickData
 
 
-class HealthResponse(BaseModel):
+class HealthData(BaseModel):
     name: str
     version: str
+
+
+class HealthResponse(BaseModel):
     status: str
+    message: str
+    data: HealthData
