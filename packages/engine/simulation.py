@@ -88,9 +88,10 @@ def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> d
 
 
 def advance_one_day() -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    world = Storage.load_world()
-    agents = Storage.load_agents()
-    updated_world = tick(world, agents)
-    Storage.save_world(updated_world)
-    Storage.save_agents(agents)
-    return updated_world, agents
+    with Storage.transaction() as state:
+        world = state["world"]
+        agents = state["agents"]
+        updated_world = tick(world, agents)
+        state["world"] = updated_world
+        state["agents"] = agents
+        return updated_world, agents
