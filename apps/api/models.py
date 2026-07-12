@@ -24,7 +24,11 @@ class ChronicleEvent(BaseModel):
     day: int
     title: str
     description: str
-    impact: dict[str, float | int] = Field(default_factory=dict)
+    before: dict[str, float | int]
+    after: dict[str, float | int]
+    event_impact: dict[str, float | int] = Field(default_factory=dict)
+    daily_delta: dict[str, float | int] = Field(default_factory=dict)
+    population_change: dict[str, Any] = Field(default_factory=dict)
 
 
 class HistoryData(BaseModel):

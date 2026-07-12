@@ -75,7 +75,7 @@ class PostgresStateStore:
             with self._connect() as connection, connection.cursor() as cursor:
                 cursor.execute("SELECT payload FROM civilos_state WHERE name = %s", (name,))
                 row = cursor.fetchone()
-                return row[0] if row else default
+                return row[0] if row else self._seed(name)
         except Exception as exc:
             raise StorageError(f"Unable to read Postgres state: {name}") from exc
 

@@ -29,7 +29,7 @@ app.include_router(tick_router)
 def storage_error_handler(_: Request, exc: StorageError):
     return JSONResponse(
         status_code=500,
-        content={"error": "storage_error", "message": str(exc)},
+        content={"status": "error", "message": str(exc), "data": None},
     )
 
 
