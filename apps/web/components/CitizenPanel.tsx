@@ -15,15 +15,18 @@ export type Citizen = {
 
 type Props = {
   citizens: Citizen[];
+  error?: string | null;
 };
 
-export default function CitizenPanel({ citizens }: Props) {
+export default function CitizenPanel({ citizens, error }: Props) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedCitizen = citizens.find((citizen) => citizen.id === selectedId);
 
   return (
     <section className="panel">
       <h2>Citizens</h2>
+      {error ? <p className="error-text">{error}</p> : null}
+      {!error && citizens.length === 0 ? <p className="muted">No citizens recorded.</p> : null}
       <div className="agent-list">
         {citizens.map((citizen) => (
           <button
