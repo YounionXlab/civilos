@@ -148,7 +148,9 @@ class Storage:
 
     @staticmethod
     def load_agents() -> list[dict[str, Any]]:
-        return Storage.load("agents", default=[])
+        from .migrations import migrate_citizens
+
+        return migrate_citizens(Storage.load("agents", default=[]))
 
     @staticmethod
     def save_agents(agents: list[dict[str, Any]]) -> None:

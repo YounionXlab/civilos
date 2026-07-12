@@ -1,6 +1,7 @@
 from typing import Any
 
 from .events import chronicle_event
+from .migrations import migrate_citizens
 from .storage import Storage
 
 
@@ -17,19 +18,7 @@ def agent_contribution(agent: dict[str, Any]) -> dict[str, float]:
     return {"cq": 0.01}
 
 
-def normalize_agent(agent: dict[str, Any]) -> None:
-    agent["profession"] = agent.get("profession", agent.pop("role", "Citizen"))
-    legacy_goals = agent.pop("goals", [])
-    agent["goal"] = agent.get("goal", legacy_goals[0] if legacy_goals else "Support the colony")
-    legacy_energy = agent.get("needs", {}).get("energy", 0.7) * 100
-    agent["energy"] = int(agent.get("energy", legacy_energy))
-    agent.setdefault("mood", "steady")
-    agent.setdefault("current_task", "Review colony systems")
-    agent.setdefault("last_log", "Ready for the next simulation day.")
-
-
 def update_agent(agent: dict[str, Any], world: dict[str, Any], index: int) -> None:
-    normalize_agent(agent)
     day = int(world["day"])
     profession = agent["profession"].lower()
     tasks = (
@@ -90,7 +79,7 @@ def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> d
 def advance_one_day() -> tuple[dict[str, Any], list[dict[str, Any]]]:
     with Storage.transaction() as state:
         world = state["world"]
-        agents = state["agents"]
+        agents = migrate_citizens(state["agents"])
         updated_world = tick(world, agents)
         state["world"] = updated_world
         state["agents"] = agents
