@@ -1,69 +1,58 @@
+import json
 from copy import deepcopy
+from pathlib import Path
 
-from packages.engine.simulation import tick
+from packages.engine.professions import GENERIC_BEHAVIOR, behavior_for
+from packages.engine.simulation import TRACKED_METRICS, tick
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_tick_creates_chronicle_and_updates_citizens():
-    world = {
-        "day": 1,
-        "population": 20,
-        "energy": 82,
-        "water": 77,
-        "food": 91,
-        "technology": 34,
-        "cq": 0.42,
-        "history": [],
+def load_seed():
+    world = json.loads((ROOT / "data" / "world.json").read_text(encoding="utf-8"))
+    agents = json.loads((ROOT / "data" / "agents.json").read_text(encoding="utf-8"))
+    return world, agents
+
+
+def test_tick_creates_accurate_chronicle_and_updates_citizens():
+    world, agents = load_seed()
+    before = {key: world[key] for key in TRACKED_METRICS}
+
+    updated_world = tick(world, agents)
+    entry = updated_world["history"][-1]
+
+    assert entry["before"] == before
+    assert entry["after"] == {key: updated_world[key] for key in TRACKED_METRICS}
+    assert entry["event_impact"] == {"food": 3}
+    assert entry["daily_delta"] == {
+        key: round(entry["after"][key] - entry["before"][key], 2)
+        for key in TRACKED_METRICS
+        if entry["after"][key] != entry["before"][key]
     }
-    agents = [
-        {
-            "id": "lin_yuan",
-            "name": "Lin Yuan",
-            "profession": "Fusion Engineer",
-            "goal": "Upgrade Fusion Reactor",
-            "mood": "focused",
-            "energy": 80,
-            "current_task": "Review reactor telemetry",
-            "last_log": "Ready.",
-        }
-    ]
-
-    updated_world = tick(deepcopy(world), agents)
-
-    assert updated_world["day"] == 2
-    assert updated_world["history"] == [
-        {
-            "day": 2,
-            "title": "Botanists harvested food.",
-            "description": "The greenhouse team completed a productive harvest.",
-            "impact": {"food": 3},
-        }
-    ]
-    assert agents[0]["energy"] != 80
     assert agents[0]["last_log"].startswith("Day 2:")
 
 
 def test_tick_is_deterministic():
-    world = {
-        "day": 2,
-        "population": 20,
-        "energy": 80,
-        "water": 75,
-        "food": 90,
-        "technology": 35,
-        "cq": 0.43,
-        "history": [],
-    }
-    agents = [
-        {
-            "id": "lin_yuan",
-            "name": "Lin Yuan",
-            "profession": "Fusion Engineer",
-            "goal": "Upgrade Fusion Reactor",
-            "energy": 75,
-        }
-    ]
+    world, agents = load_seed()
+    first_world, first_agents = deepcopy(world), deepcopy(agents)
+    second_world, second_agents = deepcopy(world), deepcopy(agents)
+    assert tick(first_world, first_agents) == tick(second_world, second_agents)
+    assert first_agents == second_agents
 
-    first = tick(deepcopy(world), deepcopy(agents))
-    second = tick(deepcopy(world), deepcopy(agents))
 
-    assert first == second
+def test_profession_registry_has_generic_fallback():
+    assert behavior_for("Unknown Profession") is GENERIC_BEHAVIOR
+
+
+def test_healthy_colony_remains_viable_for_one_thousand_ticks():
+    world, agents = load_seed()
+    minimum_resources = {"energy": 100.0, "water": 100.0, "food": 100.0}
+
+    for _ in range(1000):
+        tick(world, agents)
+        for resource in minimum_resources:
+            minimum_resources[resource] = min(minimum_resources[resource], world[resource])
+
+    assert world["population"] > 0
+    assert all(value >= 35 for value in minimum_resources.values())
+    assert len(world["history"]) == 100
