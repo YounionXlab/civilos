@@ -34,3 +34,13 @@ def test_unrelated_event_does_not_create_memory():
     tick(world, citizens)
 
     assert all(not citizen["memories"] for citizen in citizens)
+
+
+def test_negative_environment_event_is_not_attributed_to_citizen():
+    world = json.loads((ROOT / "data" / "world.json").read_text(encoding="utf-8"))
+    world["day"] = 3
+    citizens = json.loads((ROOT / "data" / "agents.json").read_text(encoding="utf-8"))
+
+    tick(world, citizens)
+
+    assert all(not citizen["memories"] for citizen in citizens)

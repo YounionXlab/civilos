@@ -9,11 +9,12 @@ def record_meaningful_memory(
     actions: list[ProfessionAction],
     event: dict[str, Any],
 ) -> Citizen | None:
-    impacted_resources = set(event.get("event_impact", {}))
+    participant_ids = set(event.get("participant_citizen_ids", []))
+    participant_professions = set(event.get("participant_professions", []))
     candidates = [
         (citizen, action)
         for citizen, action in zip(citizens, actions)
-        if impacted_resources.intersection(action.resource_impact)
+        if citizen.id in participant_ids or citizen.profession in participant_professions
     ]
     if not candidates:
         return None

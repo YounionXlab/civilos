@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 from fastapi.responses import JSONResponse
 
-from apps.api.models import CitizenResponse, CitizensResponse
+from apps.api.models import CitizenResponse, CitizensResponse, ErrorResponse
 from packages.engine.citizens import Citizen
 from packages.engine.storage import Storage
 
@@ -34,7 +34,11 @@ def get_agents():
     }
 
 
-@router.get("/agents/{citizen_id}", response_model=CitizenResponse)
+@router.get(
+    "/agents/{citizen_id}",
+    response_model=CitizenResponse,
+    responses={404: {"model": ErrorResponse}},
+)
 def get_agent(citizen_id: str):
     for record in Storage.load_agents():
         citizen = Citizen.from_dict(record)

@@ -125,6 +125,8 @@ def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> d
             "event_impact": event["event_impact"],
             "daily_delta": total_daily_delta,
             "population_change": population_change,
+            "participant_professions": event.get("participant_professions", []),
+            "participant_citizen_ids": event.get("participant_citizen_ids", []),
         }
     )
     world["history"] = world["history"][-100:]

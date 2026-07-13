@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+
+import { createLatestRequestGuard } from "./latestRequest.mjs";
 
 export type Citizen = {
   id: string;
@@ -43,24 +45,47 @@ export default function CitizenPanel({ citizens, error, apiBase }: Props) {
   const [selectedCitizen, setSelectedCitizen] = useState<CitizenProfile | null>(null);
   const [detailError, setDetailError] = useState<string | null>(null);
   const [isLoadingDetail, setIsLoadingDetail] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const requestGuardRef = useRef(createLatestRequestGuard());
 
   async function selectCitizen(citizenId: string) {
+    abortControllerRef.current?.abort();
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+    const requestToken = requestGuardRef.current.begin();
     setSelectedId(citizenId);
     setSelectedCitizen(null);
     setDetailError(null);
     setIsLoadingDetail(true);
     try {
-      const response = await fetch(`${apiBase}/agents/${citizenId}`);
+      const response = await fetch(`${apiBase}/agents/${citizenId}`, {
+        signal: controller.signal,
+      });
       if (!response.ok) {
         throw new Error("Unable to load citizen profile.");
       }
       const payload = (await response.json()) as { data: CitizenProfile };
-      setSelectedCitizen(payload.data);
+      if (requestGuardRef.current.isCurrent(requestToken)) {
+        setSelectedCitizen(payload.data);
+      }
     } catch (caught) {
-      setDetailError(caught instanceof Error ? caught.message : "Unable to load citizen profile.");
+      if (requestGuardRef.current.isCurrent(requestToken) && !controller.signal.aborted) {
+        setDetailError(caught instanceof Error ? caught.message : "Unable to load citizen profile.");
+      }
     } finally {
-      setIsLoadingDetail(false);
+      if (requestGuardRef.current.isCurrent(requestToken)) {
+        setIsLoadingDetail(false);
+      }
     }
+  }
+
+  function closeCitizen() {
+    requestGuardRef.current.cancel();
+    abortControllerRef.current?.abort();
+    setSelectedId(null);
+    setSelectedCitizen(null);
+    setDetailError(null);
+    setIsLoadingDetail(false);
   }
 
   return (
@@ -95,7 +120,7 @@ export default function CitizenPanel({ citizens, error, apiBase }: Props) {
               <p className="eyebrow">Citizen Detail</p>
               <h3>{selectedCitizen.name}</h3>
             </div>
-            <button className="text-action" onClick={() => { setSelectedId(null); setSelectedCitizen(null); }} type="button">
+            <button className="text-action" onClick={closeCitizen} type="button">
               Close
             </button>
           </div>

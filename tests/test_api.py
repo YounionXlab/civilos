@@ -95,4 +95,10 @@ def test_citizen_detail_route_returns_full_profile(tmp_path, monkeypatch):
     assert response.status_code == 200
     assert response.json()["data"]["skills"] == ["reactor calibration"]
     assert response.json()["data"]["health"] == 95
-    assert client.get("/agents/missing").status_code == 404
+    missing = client.get("/agents/missing")
+    assert missing.status_code == 404
+    assert missing.json() == {
+        "status": "error",
+        "message": "Citizen not found.",
+        "data": None,
+    }

@@ -50,6 +50,12 @@ class CitizenResponse(BaseModel):
     data: CitizenProfile
 
 
+class ErrorResponse(BaseModel):
+    status: str
+    message: str
+    data: None = None
+
+
 class ChronicleEvent(BaseModel):
     day: int
     title: str
@@ -59,6 +65,8 @@ class ChronicleEvent(BaseModel):
     event_impact: dict[str, float | int] = Field(default_factory=dict)
     daily_delta: dict[str, float | int] = Field(default_factory=dict)
     population_change: dict[str, Any] = Field(default_factory=dict)
+    participant_professions: list[str] = Field(default_factory=list)
+    participant_citizen_ids: list[str] = Field(default_factory=list)
 
 
 class HistoryData(BaseModel):
