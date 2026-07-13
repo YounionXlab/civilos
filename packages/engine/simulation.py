@@ -1,9 +1,10 @@
 import hashlib
 from typing import Any
 
+from .citizens import Citizen
 from .events import chronicle_event
 from .migrations import migrate_citizens
-from .professions import behavior_for
+from .professions import ProfessionAction, behavior_for
 from .storage import Storage
 
 TRACKED_METRICS = ("population", "energy", "water", "food", "technology", "cq")
@@ -22,24 +23,32 @@ def apply_delta(world: dict[str, Any], delta: dict[str, float]) -> None:
         world[key] = round(world.get(key, 0) + value, 2)
 
 
-def production_for(agents: list[dict[str, Any]]) -> dict[str, float]:
+def actions_for(citizens: list[Citizen], day: int) -> list[ProfessionAction]:
+    return [
+        behavior_for(citizen.profession).action_for(day, index)
+        for index, citizen in enumerate(citizens)
+    ]
+
+
+def production_for(actions: list[ProfessionAction]) -> dict[str, float]:
     production: dict[str, float] = {}
-    for agent in agents:
-        for key, value in behavior_for(agent["profession"])["production"].items():
+    for action in actions:
+        for key, value in action.resource_impact.items():
             production[key] = production.get(key, 0) + value
     return production
 
 
-def update_citizen(agent: dict[str, Any], world: dict[str, Any], index: int) -> None:
+def update_citizen(
+    citizen: Citizen, action: ProfessionAction, world: dict[str, Any], index: int
+) -> None:
     day = int(world["day"])
-    tasks = behavior_for(agent["profession"])["tasks"]
-    agent["current_task"] = tasks[(day + index) % len(tasks)]
+    citizen.current_task = action.task
     recovery = 4 if day % 7 == index % 7 else 0
-    agent["energy"] = int(clamp(agent["energy"] - 2 + (day + index) % 4 + recovery, 0, 100))
-    agent["mood"] = "focused" if agent["energy"] >= 65 else "steady" if agent["energy"] >= 40 else "tired"
-    agent["last_log"] = (
-        f"Day {day}: {agent['current_task']}. Energy is {agent['energy']} and mood is {agent['mood']}."
+    citizen.energy = int(
+        clamp(citizen.energy - 2 + (day + index) % 4 + recovery, 0, 100)
     )
+    citizen.health = int(clamp(citizen.health + action.health_delta, 0, 100))
+    citizen.mood = "focused" if citizen.energy >= 65 else "steady" if citizen.energy >= 40 else "tired"
 
 
 def deterministic_roll(world: dict[str, Any]) -> float:
@@ -70,7 +79,7 @@ def update_population(world: dict[str, Any]) -> dict[str, Any]:
 
 def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     source_agents = agents
-    citizens = migrate_citizens(agents or [])
+    citizens = [Citizen.from_dict(record) for record in (agents or [])]
     before = snapshot(world)
     world["day"] = world.get("day", 0) + 1
 
@@ -80,11 +89,14 @@ def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> d
         "water": -0.25 * population,
         "food": -0.24 * population,
     }
-    for key, value in production_for(citizens).items():
+    actions = actions_for(citizens, int(world["day"]))
+    for key, value in production_for(actions).items():
         daily_delta[key] = daily_delta.get(key, 0) + value
     apply_delta(world, daily_delta)
 
-    event = chronicle_event(world, citizens)
+    citizen_records = [citizen.to_dict() for citizen in citizens]
+    event = chronicle_event(world, citizen_records)
+    event["day"] = world["day"]
     apply_delta(world, event["event_impact"])
     scarcity_count = sum(world[key] < 35 for key in ("energy", "water", "food"))
     world["cq"] = round(clamp(world.get("cq", 0.4) - scarcity_count * 0.01, 0, 1), 2)
@@ -92,8 +104,8 @@ def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> d
         world[key] = round(clamp(world.get(key, 0), 0, 100), 2)
 
     population_change = update_population(world)
-    for index, agent in enumerate(citizens):
-        update_citizen(agent, world, index)
+    for index, (citizen, action) in enumerate(zip(citizens, actions)):
+        update_citizen(citizen, action, world, index)
 
     after = snapshot(world)
     total_daily_delta = {
@@ -115,7 +127,7 @@ def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> d
     )
     world["history"] = world["history"][-100:]
     if source_agents is not None:
-        source_agents[:] = citizens
+        source_agents[:] = [citizen.to_dict() for citizen in citizens]
     return world
 
 
