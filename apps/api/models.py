@@ -3,21 +3,51 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 
-class CitizenModel(BaseModel):
+class MemoryModel(BaseModel):
+    day: int
+    type: str
+    description: str
+    impact: str
+
+
+class RelationshipModel(BaseModel):
+    type: str
+    strength: float = Field(ge=0, le=1)
+
+
+class CitizenSummary(BaseModel):
     id: str
     name: str
     profession: str
-    goal: str
     mood: str
-    energy: int = Field(ge=0, le=100)
     current_task: str
-    last_log: str
-    memories: list[dict[str, Any]] = Field(default_factory=list)
+    latest_memory: MemoryModel | None = None
+
+
+class CitizenProfile(CitizenSummary):
+    aliases: list[str]
+    age: int = Field(ge=0)
+    gender: str
+    birth_sol: int = Field(ge=0)
+    skills: list[str]
+    traits: list[str]
+    personality: str
+    goal: str
+    energy: int = Field(ge=0, le=100)
+    health: int = Field(ge=0, le=100)
+    memories: list[MemoryModel] = Field(default_factory=list)
+    relationships: dict[str, RelationshipModel] = Field(default_factory=dict)
 
 
 class CitizensData(BaseModel):
     count: int
-    items: list[CitizenModel]
+    items: list[CitizenSummary]
+
+
+class CitizenResponse(BaseModel):
+    status: str
+    message: str
+    data: CitizenProfile
 
 
 class ChronicleEvent(BaseModel):
