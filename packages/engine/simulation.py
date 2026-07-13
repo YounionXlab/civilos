@@ -4,6 +4,7 @@ from typing import Any
 from .citizens import Citizen
 from .events import chronicle_event
 from .migrations import migrate_citizens
+from .memory import record_meaningful_memory
 from .professions import ProfessionAction, behavior_for
 from .storage import Storage
 
@@ -106,6 +107,7 @@ def tick(world: dict[str, Any], agents: list[dict[str, Any]] | None = None) -> d
     population_change = update_population(world)
     for index, (citizen, action) in enumerate(zip(citizens, actions)):
         update_citizen(citizen, action, world, index)
+    record_meaningful_memory(citizens, actions, event)
 
     after = snapshot(world)
     total_daily_delta = {
