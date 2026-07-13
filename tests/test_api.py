@@ -28,13 +28,21 @@ def seed_storage(tmp_path):
           {
             "id": "lin_yuan",
             "name": "Lin Yuan",
+            "aliases": ["Lin"],
+            "age": 31,
+            "gender": "male",
+            "birth_sol": 0,
             "profession": "Fusion Engineer",
+            "skills": ["reactor calibration"],
+            "traits": ["calm"],
+            "personality": "analytical",
             "goal": "Upgrade Fusion Reactor",
             "mood": "focused",
             "energy": 80,
+            "health": 95,
             "current_task": "Review reactor telemetry",
-            "last_log": "Ready.",
-            "memories": []
+            "memories": [],
+            "relationships": {}
           }
         ]
         """,
@@ -55,6 +63,7 @@ def test_read_routes_return_response_models(tmp_path, monkeypatch):
     assert world.json()["data"]["city"] == "Ares Alpha"
     assert agents.status_code == 200
     assert agents.json()["data"]["count"] == 1
+    assert agents.json()["data"]["items"][0]["latest_memory"] is None
     assert history.status_code == 200
     assert history.json()["data"] == {"count": 0, "items": []}
 
@@ -74,3 +83,22 @@ def test_tick_uses_consistent_response_schema_and_mutates_state(tmp_path, monkey
     assert payload["data"]["citizens"]["count"] == 1
     assert client.get("/world").json()["data"]["day"] == 2
     assert client.get("/history").json()["data"]["count"] == 1
+
+
+def test_citizen_detail_route_returns_full_profile(tmp_path, monkeypatch):
+    monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
+    seed_storage(tmp_path)
+    client = TestClient(app)
+
+    response = client.get("/agents/lin_yuan")
+
+    assert response.status_code == 200
+    assert response.json()["data"]["skills"] == ["reactor calibration"]
+    assert response.json()["data"]["health"] == 95
+    missing = client.get("/agents/missing")
+    assert missing.status_code == 404
+    assert missing.json() == {
+        "status": "error",
+        "message": "Citizen not found.",
+        "data": None,
+    }

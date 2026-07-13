@@ -32,7 +32,9 @@ def test_seed_contains_twenty_complete_citizens():
         "mood",
         "energy",
         "current_task",
-        "last_log",
+        "health",
+        "memories",
+        "relationships",
     }
     assert len(citizens) == 20
     assert all(required <= citizen.keys() for citizen in citizens)

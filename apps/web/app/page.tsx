@@ -68,7 +68,11 @@ export default async function Home() {
       {world ? (
         <div className="dashboard-grid">
           <WorldCard world={world} />
-          <CitizenPanel citizens={citizens.items} error={citizensResult.error} />
+          <CitizenPanel
+            apiBase={clientApiBase}
+            citizens={citizens.items}
+            error={citizensResult.error}
+          />
 
           <section className="panel history-panel">
             <h2>Civilization Chronicle</h2>

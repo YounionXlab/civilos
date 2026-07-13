@@ -3,21 +3,57 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 
-class CitizenModel(BaseModel):
+class MemoryModel(BaseModel):
+    day: int
+    type: str
+    description: str
+    impact: str
+
+
+class RelationshipModel(BaseModel):
+    type: str
+    strength: float = Field(ge=0, le=1)
+
+
+class CitizenSummary(BaseModel):
     id: str
     name: str
     profession: str
-    goal: str
     mood: str
-    energy: int = Field(ge=0, le=100)
     current_task: str
-    last_log: str
-    memories: list[dict[str, Any]] = Field(default_factory=list)
+    latest_memory: MemoryModel | None = None
+
+
+class CitizenProfile(CitizenSummary):
+    aliases: list[str]
+    age: int = Field(ge=0)
+    gender: str
+    birth_sol: int = Field(ge=0)
+    skills: list[str]
+    traits: list[str]
+    personality: str
+    goal: str
+    energy: int = Field(ge=0, le=100)
+    health: int = Field(ge=0, le=100)
+    memories: list[MemoryModel] = Field(default_factory=list)
+    relationships: dict[str, RelationshipModel] = Field(default_factory=dict)
 
 
 class CitizensData(BaseModel):
     count: int
-    items: list[CitizenModel]
+    items: list[CitizenSummary]
+
+
+class CitizenResponse(BaseModel):
+    status: str
+    message: str
+    data: CitizenProfile
+
+
+class ErrorResponse(BaseModel):
+    status: str
+    message: str
+    data: None = None
 
 
 class ChronicleEvent(BaseModel):
@@ -29,6 +65,8 @@ class ChronicleEvent(BaseModel):
     event_impact: dict[str, float | int] = Field(default_factory=dict)
     daily_delta: dict[str, float | int] = Field(default_factory=dict)
     population_change: dict[str, Any] = Field(default_factory=dict)
+    participant_professions: list[str] = Field(default_factory=list)
+    participant_citizen_ids: list[str] = Field(default_factory=list)
 
 
 class HistoryData(BaseModel):

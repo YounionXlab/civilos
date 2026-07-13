@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "cd apps/web && npm run build"
+    "build": "cd apps/web && npm run build",
+    "test:web": "node --test tests/web/latestRequest.test.mjs"
   },
   "dependencies": {
     "next": "14.2.5",

@@ -29,7 +29,7 @@ def test_tick_creates_accurate_chronicle_and_updates_citizens():
         for key in TRACKED_METRICS
         if entry["after"][key] != entry["before"][key]
     }
-    assert agents[0]["last_log"].startswith("Day 2:")
+    assert agents[0]["current_task"] != "Review daily priorities"
 
 
 def test_tick_is_deterministic():
@@ -42,6 +42,15 @@ def test_tick_is_deterministic():
 
 def test_profession_registry_has_generic_fallback():
     assert behavior_for("Unknown Profession") is GENERIC_BEHAVIOR
+
+
+def test_professions_create_distinct_resource_impacts():
+    fusion = behavior_for("Fusion Engineer").action_for(day=2, citizen_index=0)
+    botanist = behavior_for("Botanist").action_for(day=2, citizen_index=0)
+    doctor = behavior_for("Doctor").action_for(day=2, citizen_index=0)
+    assert fusion.resource_impact["energy"] > 0
+    assert botanist.resource_impact["food"] > 0
+    assert doctor.health_delta > 0
 
 
 def test_healthy_colony_remains_viable_for_one_thousand_ticks():
