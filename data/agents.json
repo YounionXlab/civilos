@@ -2,221 +2,541 @@
   {
     "id": "lin_yuan",
     "name": "林远",
+    "aliases": [
+      "Lin"
+    ],
+    "age": 31,
+    "gender": "male",
+    "birth_sol": 0,
     "profession": "Fusion Engineer",
-    "goal": "Upgrade Fusion Reactor",
+    "skills": [
+      "reactor calibration",
+      "power systems"
+    ],
+    "traits": [
+      "calm",
+      "responsible"
+    ],
+    "personality": "analytical",
+    "goal": "Improve reactor efficiency",
     "mood": "steady",
-    "energy": 70,
-    "current_task": "Review reactor telemetry",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 72,
+    "health": 88,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "amina_hassan",
     "name": "阿米娜·哈桑",
+    "aliases": [
+      "Amina"
+    ],
+    "age": 29,
+    "gender": "female",
+    "birth_sol": 0,
     "profession": "Botanist",
-    "goal": "Improve Greenhouse Yield",
+    "skills": [
+      "hydroponics",
+      "crop science"
+    ],
+    "traits": [
+      "patient",
+      "optimistic"
+    ],
+    "personality": "nurturing",
+    "goal": "Improve greenhouse yield",
     "mood": "steady",
-    "energy": 73,
-    "current_task": "Monitor greenhouse crops",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 76,
+    "health": 91,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "maya_chen",
     "name": "陈玛雅",
-    "profession": "Water Engineer",
-    "goal": "Close the water cycle",
+    "aliases": [
+      "Maya"
+    ],
+    "age": 34,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Miner",
+    "skills": [
+      "geology",
+      "surveying"
+    ],
+    "traits": [
+      "bold",
+      "observant"
+    ],
+    "personality": "pragmatic",
+    "goal": "Discover a stable mineral seam",
     "mood": "steady",
-    "energy": 76,
-    "current_task": "Inspect recycling filters",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 80,
+    "health": 94,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "omar_reyes",
     "name": "奥马尔·雷耶斯",
-    "profession": "Systems Engineer",
-    "goal": "Harden colony infrastructure",
+    "aliases": [
+      "Omar"
+    ],
+    "age": 38,
+    "gender": "male",
+    "birth_sol": 0,
+    "profession": "Doctor",
+    "skills": [
+      "medicine",
+      "emergency care"
+    ],
+    "traits": [
+      "empathetic",
+      "steady"
+    ],
+    "personality": "compassionate",
+    "goal": "Keep every citizen healthy",
     "mood": "steady",
-    "energy": 79,
-    "current_task": "Review habitat diagnostics",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 84,
+    "health": 97,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "sofia_kim",
     "name": "金索菲亚",
-    "profession": "Medic",
-    "goal": "Maintain citizen health",
+    "aliases": [
+      "Sofia"
+    ],
+    "age": 27,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Researcher",
+    "skills": [
+      "materials science",
+      "analysis"
+    ],
+    "traits": [
+      "curious",
+      "precise"
+    ],
+    "personality": "inquisitive",
+    "goal": "Develop resilient habitat materials",
     "mood": "steady",
-    "energy": 82,
-    "current_task": "Review health reports",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 88,
+    "health": 88,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "elias_okafor",
     "name": "伊莱亚斯·奥卡福",
-    "profession": "Logistics Coordinator",
-    "goal": "Improve supply reliability",
+    "aliases": [
+      "Eli"
+    ],
+    "age": 36,
+    "gender": "male",
+    "birth_sol": 0,
+    "profession": "Technician",
+    "skills": [
+      "maintenance",
+      "robotics"
+    ],
+    "traits": [
+      "resourceful",
+      "reliable"
+    ],
+    "personality": "methodical",
+    "goal": "Eliminate equipment downtime",
     "mood": "steady",
-    "energy": 70,
-    "current_task": "Audit supply inventory",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 72,
+    "health": 91,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "hana_sato",
     "name": "佐藤花",
-    "profession": "Fusion Engineer",
-    "goal": "Reduce reactor downtime",
+    "aliases": [
+      "Hana"
+    ],
+    "age": 33,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Teacher",
+    "skills": [
+      "instruction",
+      "history"
+    ],
+    "traits": [
+      "encouraging",
+      "wise"
+    ],
+    "personality": "reflective",
+    "goal": "Build a culture of shared knowledge",
     "mood": "steady",
-    "energy": 73,
-    "current_task": "Calibrate fusion controls",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 76,
+    "health": 94,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "noah_patel",
     "name": "诺亚·帕特尔",
-    "profession": "Botanist",
-    "goal": "Expand crop resilience",
+    "aliases": [
+      "Noah"
+    ],
+    "age": 41,
+    "gender": "male",
+    "birth_sol": 0,
+    "profession": "Administrator",
+    "skills": [
+      "planning",
+      "coordination"
+    ],
+    "traits": [
+      "fair",
+      "organized"
+    ],
+    "personality": "deliberate",
+    "goal": "Keep colony decisions transparent",
     "mood": "steady",
-    "energy": 76,
-    "current_task": "Test nutrient balance",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 80,
+    "health": 97,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "lucia_martin",
     "name": "露西亚·马丁",
-    "profession": "Water Engineer",
-    "goal": "Increase water recovery",
+    "aliases": [
+      "Lucia"
+    ],
+    "age": 30,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Fusion Engineer",
+    "skills": [
+      "grid balancing",
+      "diagnostics"
+    ],
+    "traits": [
+      "focused",
+      "inventive"
+    ],
+    "personality": "analytical",
+    "goal": "Balance the colony power grid",
     "mood": "steady",
-    "energy": 79,
-    "current_task": "Monitor reservoir quality",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 84,
+    "health": 88,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "ibrahim_saleh",
     "name": "易卜拉欣·萨利赫",
-    "profession": "Systems Engineer",
-    "goal": "Improve habitat redundancy",
+    "aliases": [
+      "Ibrahim"
+    ],
+    "age": 35,
+    "gender": "male",
+    "birth_sol": 0,
+    "profession": "Botanist",
+    "skills": [
+      "soil chemistry",
+      "seed preservation"
+    ],
+    "traits": [
+      "gentle",
+      "persistent"
+    ],
+    "personality": "nurturing",
+    "goal": "Expand crop resilience",
     "mood": "steady",
-    "energy": 82,
-    "current_task": "Inspect life-support systems",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 88,
+    "health": 91,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "mei_tan",
     "name": "谭梅",
-    "profession": "Medic",
-    "goal": "Strengthen preventive care",
+    "aliases": [
+      "Mei"
+    ],
+    "age": 28,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Miner",
+    "skills": [
+      "drilling",
+      "mineralogy"
+    ],
+    "traits": [
+      "fearless",
+      "careful"
+    ],
+    "personality": "pragmatic",
+    "goal": "Map underground resources",
     "mood": "steady",
-    "energy": 70,
-    "current_task": "Check medical supplies",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 72,
+    "health": 94,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "david_mbeki",
     "name": "戴维·姆贝基",
-    "profession": "Logistics Coordinator",
-    "goal": "Reduce material waste",
+    "aliases": [
+      "David"
+    ],
+    "age": 39,
+    "gender": "male",
+    "birth_sol": 0,
+    "profession": "Doctor",
+    "skills": [
+      "preventive care",
+      "surgery"
+    ],
+    "traits": [
+      "calm",
+      "kind"
+    ],
+    "personality": "compassionate",
+    "goal": "Strengthen preventive medicine",
     "mood": "steady",
-    "energy": 73,
-    "current_task": "Plan daily allocations",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 76,
+    "health": 97,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "elena_volkov",
     "name": "叶莲娜·沃尔科娃",
-    "profession": "Fusion Engineer",
-    "goal": "Improve reactor efficiency",
+    "aliases": [
+      "Elena"
+    ],
+    "age": 32,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Researcher",
+    "skills": [
+      "energy storage",
+      "experimentation"
+    ],
+    "traits": [
+      "driven",
+      "precise"
+    ],
+    "personality": "inquisitive",
+    "goal": "Improve long-term energy storage",
     "mood": "steady",
-    "energy": 76,
-    "current_task": "Inspect power conduits",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 80,
+    "health": 88,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "samira_nouri",
     "name": "萨米拉·努里",
-    "profession": "Botanist",
-    "goal": "Stabilize food production",
+    "aliases": [
+      "Samira"
+    ],
+    "age": 26,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Technician",
+    "skills": [
+      "sensor repair",
+      "fabrication"
+    ],
+    "traits": [
+      "quick",
+      "adaptable"
+    ],
+    "personality": "methodical",
+    "goal": "Automate habitat maintenance",
     "mood": "steady",
-    "energy": 79,
-    "current_task": "Prepare the next harvest",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 84,
+    "health": 91,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "gabriel_silva",
     "name": "加布里埃尔·席尔瓦",
-    "profession": "Water Engineer",
-    "goal": "Protect emergency reserves",
+    "aliases": [
+      "Gabe"
+    ],
+    "age": 37,
+    "gender": "male",
+    "birth_sol": 0,
+    "profession": "Teacher",
+    "skills": [
+      "engineering education",
+      "mentoring"
+    ],
+    "traits": [
+      "patient",
+      "humorous"
+    ],
+    "personality": "reflective",
+    "goal": "Train the next technical generation",
     "mood": "steady",
-    "energy": 82,
-    "current_task": "Test purification output",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 88,
+    "health": 94,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "leila_morgan",
     "name": "莱拉·摩根",
-    "profession": "Systems Engineer",
-    "goal": "Automate system monitoring",
+    "aliases": [
+      "Leila"
+    ],
+    "age": 40,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Administrator",
+    "skills": [
+      "logistics",
+      "mediation"
+    ],
+    "traits": [
+      "diplomatic",
+      "decisive"
+    ],
+    "personality": "deliberate",
+    "goal": "Improve supply reliability",
     "mood": "steady",
-    "energy": 70,
-    "current_task": "Review sensor alerts",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 72,
+    "health": 97,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "kenji_watanabe",
     "name": "渡边健司",
+    "aliases": [
+      "Kenji"
+    ],
+    "age": 29,
+    "gender": "male",
+    "birth_sol": 0,
     "profession": "Fusion Engineer",
-    "goal": "Balance the power grid",
+    "skills": [
+      "reactor safety",
+      "thermal systems"
+    ],
+    "traits": [
+      "disciplined",
+      "quiet"
+    ],
+    "personality": "analytical",
+    "goal": "Reduce reactor risk",
     "mood": "steady",
-    "energy": 73,
-    "current_task": "Review reactor telemetry",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 76,
+    "health": 88,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "fatima_bello",
     "name": "法蒂玛·贝洛",
+    "aliases": [
+      "Fatima"
+    ],
+    "age": 31,
+    "gender": "female",
+    "birth_sol": 0,
     "profession": "Botanist",
-    "goal": "Improve greenhouse yield",
+    "skills": [
+      "water efficiency",
+      "greenhouse design"
+    ],
+    "traits": [
+      "hopeful",
+      "creative"
+    ],
+    "personality": "nurturing",
+    "goal": "Reduce agricultural water use",
     "mood": "steady",
-    "energy": 76,
-    "current_task": "Monitor greenhouse crops",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 80,
+    "health": 91,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "mateo_alvarez",
     "name": "马特奥·阿尔瓦雷斯",
-    "profession": "Water Engineer",
-    "goal": "Optimize recycling energy",
+    "aliases": [
+      "Mateo"
+    ],
+    "age": 34,
+    "gender": "male",
+    "birth_sol": 0,
+    "profession": "Miner",
+    "skills": [
+      "excavation",
+      "resource logistics"
+    ],
+    "traits": [
+      "strong",
+      "loyal"
+    ],
+    "personality": "pragmatic",
+    "goal": "Secure construction resources",
     "mood": "steady",
-    "energy": 79,
-    "current_task": "Inspect recycling filters",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 84,
+    "health": 94,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   },
   {
     "id": "nora_jensen",
     "name": "诺拉·延森",
-    "profession": "Medic",
+    "aliases": [
+      "Nora"
+    ],
+    "age": 30,
+    "gender": "female",
+    "birth_sol": 0,
+    "profession": "Doctor",
+    "skills": [
+      "mental health",
+      "field medicine"
+    ],
+    "traits": [
+      "attentive",
+      "resilient"
+    ],
+    "personality": "compassionate",
     "goal": "Maintain crew readiness",
     "mood": "steady",
-    "energy": 82,
-    "current_task": "Review health reports",
-    "last_log": "Ready for the next simulation day.",
-    "memories": []
+    "energy": 88,
+    "health": 97,
+    "current_task": "Review daily priorities",
+    "memories": [],
+    "relationships": {}
   }
 ]

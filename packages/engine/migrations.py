@@ -1,6 +1,8 @@
 from copy import deepcopy
 from typing import Any
 
+from .citizens import Citizen
+
 
 def migrate_citizen(source: dict[str, Any]) -> dict[str, Any]:
     citizen = deepcopy(source)
@@ -14,8 +16,17 @@ def migrate_citizen(source: dict[str, Any]) -> dict[str, Any]:
     citizen.setdefault("mood", "steady")
     citizen.setdefault("current_task", "Review colony systems")
     citizen.setdefault("last_log", "Ready for the next simulation day.")
+    citizen.setdefault("aliases", [])
+    citizen.setdefault("age", 30)
+    citizen.setdefault("gender", "unspecified")
+    citizen.setdefault("birth_sol", 0)
+    citizen.setdefault("skills", [])
+    citizen.setdefault("traits", [])
+    citizen.setdefault("personality", "adaptable")
+    citizen.setdefault("health", 90)
     citizen.setdefault("memories", [])
-    return citizen
+    citizen.setdefault("relationships", {})
+    return Citizen.from_dict(citizen).to_dict()
 
 
 def migrate_citizens(citizens: list[dict[str, Any]]) -> list[dict[str, Any]]:
