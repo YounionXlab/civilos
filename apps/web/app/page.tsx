@@ -54,12 +54,13 @@ export default async function Home() {
   const world = worldResult.data;
   const citizens = citizensResult.data;
   const history = historyResult.data;
+  const recentHistory = [...history.items].reverse();
 
   return (
     <main className="dashboard">
       <header className="topbar">
         <div>
-          <p className="eyebrow">CivilOS Alpha 0.2</p>
+          <p className="eyebrow">CivilOS Alpha 0.3-A</p>
           <h1>{world ? world.city : "CivilOS"} Operations</h1>
         </div>
         <TickButton apiBase={clientApiBase} />
@@ -75,12 +76,12 @@ export default async function Home() {
           />
 
           <section className="panel history-panel">
-            <h2>Civilization Chronicle</h2>
+            <div className="section-heading"><div><p className="eyebrow">Latest first</p><h2>Civilization Chronicle</h2></div><span className="count-badge">{history.count}</span></div>
             {historyResult.error ? (
               <p className="error-text">{historyResult.error}</p>
             ) : history.items.length > 0 ? (
               <ol className="history-list">
-                {history.items.map((item) => (
+                {recentHistory.map((item) => (
                   <li key={`${item.day}-${item.title}`}>
                     <span>Day {item.day}</span>
                     <h3>{item.title}</h3>
