@@ -54,7 +54,7 @@ export default async function Home() {
   const world = worldResult.data;
   const citizens = citizensResult.data;
   const history = historyResult.data;
-  const recentHistory = [...history.items].reverse();
+  const recentHistory = [...history.items].sort((a, b) => b.day - a.day);
 
   return (
     <main className="dashboard">
