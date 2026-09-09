@@ -1,44 +1,118 @@
-# CivilOS — Civilization Evolution Laboratory
+# CivilOS — Civilization Evolution Runtime
 
 ## Purpose
 
-CivilOS is not only a simulation product. It is the experimental layer of the X-LAB human evolution system.
+CivilOS is the civilization branch of the X-LAB Evolution Experiment System.
 
-The Human Evolution Key Questions list asks which problems humanity should understand and solve next. CivilOS turns selected questions into runnable civilization experiments.
+It is not the universal experiment engine for every scientific domain. Climate, genetics, materials, society, and other research tracks may use the same higher-level experimental method, but CivilOS is specifically responsible for modeling, running, observing, and comparing **civilization-scale systems over time**.
 
-> Key Questions ask: **What should humanity solve?**
+CivilOS focuses on questions involving:
+
+- population;
+- resources;
+- energy;
+- technology;
+- institutions;
+- governance;
+- culture;
+- social coordination;
+- multi-agent behavior;
+- resilience;
+- long-term civilization evolution.
+
+> X-LAB asks: **What problems of human evolution are worth studying?**
 >
-> CivilOS asks: **What happens if we try?**
-
-The purpose of the Civilization Evolution Laboratory is to create worlds in which hypotheses about civilization can be tested through long-running simulation, observation, comparison, and iteration.
+> The Evolution Experiment System asks: **How can those questions become measurable experiments?**
+>
+> CivilOS asks: **How does a civilization evolve when we let the world run?**
 
 ---
 
-## Position in X-LAB
+## Position in the Updated X-LAB Architecture
 
 ```text
 X-LAB Human Evolution Laboratory
-
-        ↓
-
-Human Evolution Key Questions
-What should humanity solve?
-
-        ↓
-
-CivilOS — Civilization Evolution Laboratory
-What happens if we try?
-
-        ↓
-
-Runnable Civilization Experiments
-
-        ↓
-
-Observation → Insight → Real-world Feedback
+│
+├── Human Evolution Key Questions
+│   Research Agenda
+│
+├── Evolution Experiment System
+│   │
+│   ├── Shared Experiment Method
+│   │   Data
+│   │   Model
+│   │   State
+│   │   Metrics
+│   │   Scenario
+│   │   Intervention
+│   │   Simulation
+│   │   Observation
+│   │   Evaluation
+│   │   Feedback
+│   │
+│   ├── Climate Lab
+│   ├── Bio / Genetics Lab
+│   ├── Materials Lab
+│   ├── Society Lab
+│   ├── CivilOS — Civilization Evolution Runtime
+│   └── Space Expansion Lab
+│
+├── Fiction / Multi-world Narratives
+│   Imagine possibilities
+│
+├── Mirror Worlds / Interactive Experiences
+│   Experience possibilities
+│
+└── YICE
+    Bring insight back into real-world decisions
 ```
 
-CivilOS therefore acts as the bridge between abstract civilization questions and observable system behavior.
+CivilOS therefore sits **inside** the broader Evolution Experiment System rather than representing the whole of X-LAB experimentation.
+
+---
+
+## Shared Experimental Method
+
+Across different research domains, experiments can often be represented using the same basic structure:
+
+```text
+Question
+  ↓
+Variables
+  ↓
+Data
+  ↓
+Model
+  ↓
+State
+  ↓
+Metrics
+  ↓
+Scenario / Intervention
+  ↓
+Simulation
+  ↓
+Observation
+  ↓
+Evaluation
+  ↓
+Feedback
+```
+
+The domain changes, but the experimental grammar remains similar.
+
+Examples:
+
+| Domain | Typical State | Intervention | Metrics | Simulation Horizon |
+| --- | --- | --- | --- | --- |
+| Climate | temperature, CO₂, ocean state | emissions policy | warming, sea level, extremes | decades / centuries |
+| Genetics | allele frequency, phenotype | selection pressure | fitness, diversity | generations |
+| Materials | composition, structure, defects | doping, processing | strength, conductivity | process / lifecycle |
+| Society | population, institutions, networks | policy, technology, shocks | stability, inequality, growth | years / decades |
+| Civilization | population, resources, technology, governance | rules, events, institutions | CQ, resilience, continuity | decades / centuries |
+| Space Expansion | settlements, logistics, energy, population | launch strategy, infrastructure | survival, cost, growth | decades / centuries |
+
+CivilOS implements this grammar for civilization-scale systems.
 
 ---
 
@@ -48,155 +122,54 @@ Do not try to prove a grand theory of civilization in advance.
 
 Instead:
 
-1. identify an important human-evolution question;
+1. identify an important evolution question;
 2. define an explicit hypothesis;
 3. construct a world with known initial conditions;
-4. run the civilization over time;
-5. observe decisions, adaptation, failure, recovery, and emergence;
-6. compare outcomes across alternate conditions;
-7. record the resulting insight;
-8. feed useful lessons back into X-LAB research and real-world decision systems.
+4. define measurable state and metrics;
+5. run the civilization over time;
+6. introduce scenarios or interventions when needed;
+7. observe adaptation, failure, recovery, and emergence;
+8. compare outcomes across alternate conditions;
+9. record insight;
+10. feed useful lessons back into X-LAB research and real-world decision systems.
 
-CivilOS is therefore a **civilization experiment runtime**, not merely a game world.
+CivilOS is therefore a **runtime for civilization experiments**, not merely a game world.
 
 ---
 
-## Experiment Framework
+## CivilOS Experiment Framework
 
 Every major CivilOS world should be registered as an experiment.
 
-Each experiment should define the following fields.
+Each experiment should define:
 
-### 1. Experiment ID
+1. Experiment ID
+2. Key Question
+3. Hypothesis
+4. Initial Conditions
+5. Variables
+6. Metrics
+7. Events / Interventions
+8. Observation Window
+9. Results
+10. Insight
 
-Canonical format:
-
-```text
-EXP-001
-EXP-002
-EXP-003
-```
-
-### 2. Key Question
-
-The human-evolution question being explored.
-
-Example:
-
-> When humanity establishes its first self-sustaining civilization beyond Earth, what conditions are required for long-term survival and flourishing?
-
-### 3. Hypothesis
-
-A falsifiable or at least testable proposition.
-
-Example:
-
-> A small Mars settlement can remain stable without direct Earth support when energy, water, food, technical capability, social trust, and institutional adaptability remain above critical thresholds.
-
-### 4. Initial Conditions
-
-Examples:
-
-- location;
-- population;
-- resource reserves;
-- technology level;
-- citizen capabilities;
-- governance model;
-- social structure;
-- external risks;
-- random seed.
-
-### 5. Variables
-
-Variables that may be changed between experiment runs.
-
-Examples:
-
-- resource scarcity;
-- population composition;
-- governance rules;
-- technology access;
-- citizen traits;
-- external shocks;
-- communication delays;
-- degree of AI participation.
-
-### 6. Metrics
-
-Measures used to observe the civilization.
-
-Possible categories:
-
-#### Survival
-- population stability;
-- energy security;
-- water security;
-- food security;
-- health.
-
-#### Capability
-- technology;
-- productivity;
-- infrastructure resilience;
-- knowledge retention.
-
-#### Social
-- cooperation;
-- trust;
-- conflict;
-- inequality;
-- relationship network health.
-
-#### Civilization
-- CQ / civilization quality;
-- adaptability;
-- institutional stability;
-- innovation rate;
-- recovery after shocks.
-
-### 7. Events and Interventions
-
-Events may be:
-
-- endogenous — created by the civilization itself;
-- exogenous — environmental or external shocks;
-- experimental interventions — deliberately introduced to test a hypothesis.
-
-### 8. Observation Window
-
-Example:
+Canonical IDs:
 
 ```text
-365 Sols
-10 Colony Years
-100 simulated years
+EXP-CIV-001
+EXP-CIV-002
+EXP-CIV-003
 ```
 
-### 9. Results
-
-Record:
-
-- important transitions;
-- failures;
-- recoveries;
-- emergent behavior;
-- unexpected outcomes;
-- comparative differences between runs.
-
-### 10. Insight
-
-The experiment should end with a human-readable conclusion:
-
-> What did this world teach us about civilization?
-
-This is not required to be a universal truth. It is an experimental observation.
+Existing legacy IDs such as `EXP-001` may remain valid during Alpha, but new civilization experiments should prefer the `EXP-CIV-*` namespace once multi-domain experiments are introduced.
 
 ---
 
 ## Experiment 001 — Ares Alpha
 
-**ID:** EXP-001  
+**Current ID:** EXP-001  
+**Future canonical namespace:** EXP-CIV-001  
 **World:** Ares Alpha  
 **Scenario:** Mars Civilization Seed
 
@@ -222,6 +195,7 @@ The Alpha implementation currently observes:
 - CQ;
 - citizen professions;
 - citizen tasks;
+- citizen health and energy;
 - citizen memories;
 - civilization events;
 - civilization chronicle.
@@ -249,70 +223,66 @@ CivilOS Alpha 0.x is primarily working through Phase 0 and Phase 1 foundations.
 
 ---
 
-## Candidate Future Experiments
+## Relationship to the Human Evolution Key Questions
 
-These are research directions, not committed product scope.
+The Human Evolution Key Questions list is the X-LAB research agenda, not a content appendix.
 
-### EXP-002 — After the Flood
+A question may generate one or many experiments across different labs.
 
-**Question:** Can a civilization rebuild after catastrophic climate and infrastructure collapse without reproducing the same structural weaknesses?
+Example:
 
-### EXP-003 — Zero War
+```text
+Q-021
+How should humanity build the first cross-celestial civilization system?
 
-**Question:** Can a complex civilization remain stable without war as a mechanism of competition, coercion, and political reordering?
+├── EXP-CIV-001  Ares Alpha
+├── EXP-SPACE-001  Cislunar Logistics
+├── EXP-ENERGY-001  Lunar Power Grid
+└── EXP-GOV-001  Multi-planet Governance
+```
 
-### EXP-004 — The Long-Life Society
-
-**Question:** What happens to family, work, wealth, education, politics, and innovation when healthy human lifespan approaches 150 years?
-
-### EXP-005 — AI Majority
-
-**Question:** How does governance change when artificial agents become the majority of economically and cognitively active civilization participants?
-
-### EXP-006 — Earth Council
-
-**Question:** Under what conditions can humanity develop durable planetary-level coordination while preserving meaningful local autonomy?
-
-### EXP-007 — Cislunar Civilization
-
-**Question:** How should humanity build its first civilization system spanning Earth, orbital infrastructure, the Moon, and the wider cislunar economy?
+This means CivilOS should only own the parts of a question that require civilization-scale simulation. Other dimensions may belong to other labs.
 
 ---
 
 ## Relationship to Other X-LAB Systems
 
-CivilOS should not duplicate the role of other X-LAB products.
-
 ### Human Evolution Key Questions
 
-Defines the problems worth studying.
+Defines the research agenda: what humanity should understand, test, or solve next.
+
+### Evolution Experiment System
+
+Provides the common experimental grammar: data, model, state, metrics, scenarios, simulation, observation, evaluation, and feedback.
 
 ### Fiction / Multi-world Narratives
 
-Explores possible worlds through narrative imagination.
+Explores possible worlds through imagination.
 
 ### Mirror Worlds / Interactive Experiences
 
-Lets individuals experience choices and consequences from a first-person perspective.
+Lets people experience choices and consequences from a first-person perspective.
 
 ### CivilOS
 
-Lets an entire civilization run over time and makes systemic consequences observable.
+Lets a civilization-scale system run over time so systemic consequences can be observed.
 
 ### YICE
 
-Brings insights back into real-world judgment, strategy, coordination, and action.
+Brings insight back into real-world judgment, strategy, coordination, and action.
 
-The loop is:
+The updated loop is:
 
 ```text
 Reality
   ↓
 Key Question
   ↓
-Possible World
+Imagine Possibility
   ↓
-Civilization Experiment
+Experience Possibility
+  ↓
+Run / Experiment Possibility
   ↓
 Observation
   ↓
@@ -320,7 +290,18 @@ Insight
   ↓
 Real-world Decision
   ↓
+Action
+  ↓
 Reality Feedback
+```
+
+Or in product terms:
+
+```text
+Fiction  →  Imagine
+Mirror   →  Experience
+CivilOS  →  Simulate / Run
+YICE     →  Decide
 ```
 
 ---
@@ -329,14 +310,14 @@ Reality Feedback
 
 The public CivilOS product should eventually have two levels.
 
-### Level 1 — Experiment Library
+### Level 1 — Civilization Experiment Library
 
 Examples:
 
 ```text
-EXP-001  Ares Alpha
-EXP-002  After the Flood
-EXP-003  Zero War
+EXP-CIV-001  Ares Alpha
+EXP-CIV-002  After the Flood
+EXP-CIV-003  Zero War
 ```
 
 Each experiment should show:
@@ -353,22 +334,24 @@ Entering an experiment opens its live world interface.
 
 For Ares Alpha this is the current colony operations / observation interface.
 
-This structure prevents CivilOS from becoming permanently identified with only one Mars scenario.
+This structure prevents CivilOS from becoming permanently identified with only one Mars scenario while keeping CivilOS focused on civilization-scale questions.
 
 ---
 
 ## Engineering Constraint
 
-Do not let the laboratory abstraction slow down Alpha development.
+Do not let the broader X-LAB architecture cause premature abstraction inside CivilOS.
 
 For the current Ares Alpha release:
 
 - keep the simulation architecture simple;
 - continue using the existing Engine → API → Web separation;
 - treat EXP-001 metadata as a thin layer around the existing world;
-- do not add generalized multi-world infrastructure until the first world is stable.
+- do not implement a universal multi-domain experiment engine inside the CivilOS repository;
+- do not generalize climate, genetics, materials, or unrelated science models into CivilOS;
+- only extract shared infrastructure later when two or more real domains demonstrate the need.
 
-The laboratory framework is a product and research direction, not permission for premature abstraction.
+CivilOS remains a focused civilization runtime.
 
 ---
 
@@ -378,7 +361,7 @@ CivilOS exists to make civilization itself experimentally observable.
 
 The goal is not to predict humanity perfectly.
 
-The goal is to create many coherent worlds in which humanity can examine questions that are too large, too slow, too dangerous, or too expensive to test directly in reality.
+The goal is to create coherent worlds in which humanity can examine civilization questions that are too large, too slow, too dangerous, or too expensive to test directly in reality.
 
 > We do not simulate worlds only to escape reality.
 >
