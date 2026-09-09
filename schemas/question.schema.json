@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civilos.x-lab/schemas/question.schema.json",
+  "title": "X-LAB Research Question",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "domain", "priority", "maturity", "question"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^Q-[0-9]{3}$"},
+    "title": {"type": "string", "minLength": 3},
+    "question": {"type": "string", "minLength": 10},
+    "domain": {
+      "type": "string",
+      "enum": [
+        "human_capability_and_cognition",
+        "society_and_institutions",
+        "health_life_and_biological_evolution",
+        "climate_ecology_and_planetary_resilience",
+        "energy_materials_and_industrial_capability",
+        "planetary_and_multibody_civilization",
+        "long_term_civilization_and_cosmic_expansion"
+      ]
+    },
+    "priority": {"type": "string", "enum": ["P0", "P1", "P2", "P3"]},
+    "maturity": {"type": "string", "enum": ["M0", "M1", "M2", "M3", "M4", "M5"]},
+    "research_directions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "active_experiments": {"type": "array", "items": {"type": "string", "pattern": "^EXP-[A-Z]+-[0-9]{3}$"}, "uniqueItems": true},
+    "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "status": {"type": "string", "enum": ["registered", "framed", "modeled", "experimental", "validated", "operational"]}
+  }
+}
