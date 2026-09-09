@@ -28,7 +28,7 @@ def test_dangling_result_path_fails(tmp_path: Path) -> None:
         "research/questions.json",
         "research/mappings.json",
         "research/preregistrations/pre-exp-civ-001-001.json",
-        "research/evidence_items/evi-civ-001-nasa-life-support.json",
+        "research/evidence_items/evi-civ-001.json",
         "insights/ins-001-ares-alpha-baseline.json",
         "schemas/research_package.schema.json",
         "schemas/evidence_item.schema.json",
