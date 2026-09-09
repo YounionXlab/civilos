@@ -98,6 +98,16 @@ def validate_research_data(root: Path = ROOT) -> None:
     if aliases.get("EXP-001") not in (None, "EXP-CIV-001"):
         raise ResearchDataError("EXP-001 must only alias EXP-CIV-001")
 
+    evidence_path = root / "research" / "evidence_sources.json"
+    if evidence_path.exists():
+        evidence_doc = _load_json(evidence_path)
+        source_schema = root / "schemas" / "evidence_source.schema.json"
+        sources = evidence_doc.get("sources", [])
+        source_ids = [item["id"] for item in sources]
+        _ensure_unique(source_ids, "evidence source IDs")
+        for item in sources:
+            _validate(item, source_schema, f"evidence source {item.get('id', '<unknown>')}")
+
     insight_schema = root / "schemas" / "insight.schema.json"
     insights_dir = root / "insights"
     if insights_dir.exists():
