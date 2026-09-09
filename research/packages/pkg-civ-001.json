@@ -11,7 +11,7 @@
   ],
   "report_paths": [],
   "insight_ids": ["INS-001"],
-  "evidence_item_ids": [],
+  "evidence_item_ids": ["EVI-CIV-001"],
   "runtime": "CivilOS",
   "code_version": "b42f3f42760cbf39a128acc6fa6ac562ae0c37aa",
   "reproducibility_status": "reproducible",
@@ -20,9 +20,9 @@
   "limitations": [
     "The current package is based on one model implementation and has no independent external replication.",
     "The failure-boundary suite is preregistered but not yet completed.",
-    "External empirical evidence has not yet been linked to INS-001."
+    "EVI-CIV-001 is contextual external evidence and is not independent validation of INS-001."
   ],
   "publication_status": "draft",
   "created_at": "2026-09-09T19:15:00Z",
-  "updated_at": "2026-09-09T19:15:00Z"
+  "updated_at": "2026-09-09T19:17:00Z"
 }
