@@ -1,0 +1,11 @@
+{
+  "experiment_id": "EXP-CIV-001",
+  "observation_window": 365,
+  "scenarios": {
+    "baseline": {"final_state":{"cq":1.0,"energy":100.0,"food":100.0,"population":20,"technology":100.0,"water":100.0},"minimums":{"cq":0.42,"energy":82.8,"food":91.6,"water":79.1},"observations":365,"result":"supported","runtime_interventions":[]},
+    "resource-stress": {"final_state":{"cq":1.0,"energy":100.0,"food":100.0,"population":20,"technology":100.0,"water":100.0},"minimums":{"cq":0.42,"energy":45.8,"food":50.6,"water":47.1},"observations":365,"recovery":{"energy":{"minimum":45.8,"minimum_sol":1,"recovered_to_70_sol":32},"food":{"minimum":50.6,"minimum_sol":1,"recovered_to_70_sol":17},"water":{"minimum":47.1,"minimum_sol":1,"recovered_to_70_sol":50}},"result":"supported","runtime_interventions":[]},
+    "shock-stress": {"final_state":{"cq":1.0,"energy":100.0,"food":100.0,"population":20,"technology":100.0,"water":100.0},"minimums":{"cq":0.42,"energy":71.6,"food":70.6,"water":70.1},"observations":365,"result":"supported","runtime_interventions":[{"day":60,"event_impact":{"energy":-30}},{"day":120,"event_impact":{"water":-30}},{"day":180,"event_impact":{"food":-30}},{"day":240,"event_impact":{"energy":-20,"water":-20,"food":-20}}]},
+    "low-coordination": {"final_state":{"cq":0.88,"energy":100.0,"food":100.0,"population":20,"technology":100.0,"water":100.0},"minimums":{"cq":0.15,"energy":82.8,"food":91.6,"water":79.1},"observations":365,"result":"supported","runtime_interventions":[]}
+  },
+  "assessment": "All four moderate-stress scenarios remained viable, but final-state convergence and weak coupling between low CQ and material outcomes indicate that the current model remains structurally forgiving."
+}
