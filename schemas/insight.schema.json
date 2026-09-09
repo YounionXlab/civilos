@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civilos.x-lab/schemas/insight.schema.json",
+  "title": "X-LAB Research Insight",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "statement", "source_experiments", "source_questions", "confidence", "status"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^INS-[0-9]{3,}$"},
+    "title": {"type": "string", "minLength": 3},
+    "statement": {"type": "string", "minLength": 10},
+    "source_experiments": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^EXP-[A-Z]+-[0-9]{3}$"}, "uniqueItems": true},
+    "source_questions": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^Q-[0-9]{3}$"}, "uniqueItems": true},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "status": {"type": "string", "enum": ["provisional", "supported", "contested", "superseded", "validated"]},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "implications": {"type": "array", "items": {"type": "string"}},
+    "decision_relevance": {"type": "array", "items": {"type": "string"}},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}
