@@ -1,35 +1,37 @@
 {
   "id": "INS-001",
-  "title": "Ares Alpha baseline viability",
-  "statement": "Under the current EXP-CIV-001 baseline model and seed, Ares Alpha remained viable for 365 Sols while material reserves, technology, and CQ increased together; this is provisional evidence that material resilience and coordinated capability can reinforce one another in the current CivilOS model.",
+  "title": "Ares Alpha modeled viability under moderate stress",
+  "statement": "Across the current EXP-CIV-001 baseline, resource-stress, shock-stress, and low-coordination scenarios, Ares Alpha remained viable for 365 Sols; this strengthens provisional evidence that the present CivilOS model contains strong recovery dynamics, while also showing that the model is still too forgiving to support a broader claim about real-world civilization resilience.",
   "source_experiments": ["EXP-CIV-001"],
   "source_questions": ["Q-024"],
-  "confidence": 0.55,
+  "confidence": 0.65,
   "status": "provisional",
   "evidence": [
-    "results/exp-civ-001/baseline-001.json records a completed 365-Sol run with 365 observations.",
-    "Population remained at 20 throughout the run and no configured failure signal was met.",
-    "The minimum observed energy, water, and food values were 82.8, 79.1, and 91.6 respectively.",
-    "Technology increased from 34.89 to 100.0 and CQ increased from 0.42 to 1.0.",
-    "All five configured success signals were met in the deterministic baseline report."
+    "The baseline and three comparative scenarios each completed 365 observations deterministically.",
+    "The resource-stress scenario began near energy 45, water 45, and food 50; observed minima were 45.8, 47.1, and 50.6 and all three recovered above 70 within 50 Sols.",
+    "The shock-stress scenario absorbed deterministic energy, water, and food shocks at Sols 60, 120, 180, and 240 and still ended at 100 for all three material resources.",
+    "The low-coordination scenario began at CQ 0.15 and ended at CQ 0.88 while material resources and technology still reached their ceilings.",
+    "All four scenario reports classified the hypothesis as supported and population remained at 20 in every scenario."
   ],
   "limitations": [
-    "This insight is based on one deterministic baseline configuration and one seed; it is not yet a cross-scenario conclusion.",
-    "Energy, water, food, technology, and CQ approach or reach model ceilings, suggesting the current baseline may be too forgiving to measure long-run trade-offs well.",
-    "Population remained flat, so the run does not yet test demographic growth, decline, or replacement dynamics.",
-    "Several event types repeat on a fixed five-Sol cycle, limiting the diversity and realism of shocks.",
+    "All runs still use one deterministic seed and the same underlying model structure, so the comparison tests scenario sensitivity rather than independent replication.",
+    "Energy, water, food, and technology converge to model ceilings in every scenario, indicating strong structural recovery and limited long-run trade-offs.",
+    "Low starting CQ produced almost no material or technological penalty, showing that coordination is not yet strongly coupled to survival and production outcomes.",
+    "The configured shock sequence was moderate relative to the current system's recovery capacity; post-tick minima stayed near or above 70 in the shock scenario.",
+    "Population remained flat in every scenario, so demographic resilience is still effectively untested.",
     "The current signal evaluator is rule-based and should not be treated as independent scientific validation."
   ],
   "implications": [
-    "The baseline is useful as a deterministic control case for future comparison experiments.",
-    "The next experiments should vary resource margins, event severity, profession composition, and institutional/CQ conditions rather than treating this baseline result as validated truth.",
-    "Ceiling saturation should be reduced or stress scenarios introduced before drawing stronger conclusions about sustainability."
+    "INS-001 is stronger than a single-run baseline finding, but should remain provisional.",
+    "The next experiment suite should search for failure boundaries rather than only confirm recovery under moderate perturbations.",
+    "CQ, governance, profession composition, and demographic mechanisms need stronger causal coupling before CivilOS can test civilization-level institutional resilience.",
+    "Future stress tests should include compound shocks, sustained production loss, lower starting technology, profession loss, and longer observation windows."
   ],
   "decision_relevance": [
-    "Use EXP-CIV-001 baseline-001 as the control run for Ares Alpha experiment design.",
-    "Do not promote this insight beyond provisional status until comparison runs reproduce or challenge the pattern.",
-    "Prioritize stress-test and sensitivity experiments before using Ares Alpha findings in YICE or real-world decision guidance."
+    "Use comparative-001 as evidence that the current Ares Alpha model is robust to moderate modeled stress, not as evidence that a Mars settlement would be robust in reality.",
+    "Keep INS-001 at provisional status while raising confidence modestly from 0.55 to 0.65 because the pattern reproduced across four scenarios.",
+    "Prioritize boundary-finding experiments and model-coupling improvements before routing Ares Alpha findings into YICE or real-world decision guidance."
   ],
   "created_at": "2026-09-09T17:46:19Z",
-  "updated_at": "2026-09-09T17:46:19Z"
+  "updated_at": "2026-09-09T17:56:30Z"
 }
