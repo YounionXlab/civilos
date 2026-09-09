@@ -1,15 +1,13 @@
 {
-  "id": "EXP-001",
+  "id": "EXP-CIV-001",
+  "legacy_aliases": ["EXP-001"],
   "slug": "ares-alpha",
   "title": "Ares Alpha",
+  "runtime": "CivilOS",
   "status": "active",
-  "category": "multi-planet-civilization",
-  "key_question": "When humans establish a self-sustaining settlement on Mars, what conditions are required for it to develop into a stable and adaptive civilization?",
+  "questions": ["Q-024"],
   "hypothesis": "A Mars settlement becomes civilization-like when material resilience, technological capacity, citizen specialization, collective decision quality, and historical memory reinforce one another over time.",
   "world_seed": "ARES-ALPHA-001",
-  "scenario": "Mars Awakening",
-  "civilization_seed": "Explorer",
-  "start_year": 2135,
   "random_seed": 20260707,
   "initial_conditions": {
     "population": 20,
@@ -18,48 +16,19 @@
     "food_range": [80, 95],
     "technology": 34
   },
-  "observation_window_sols": 365,
-  "primary_metrics": [
-    {
-      "key": "population",
-      "meaning": "Population continuity and demographic stability"
-    },
-    {
-      "key": "energy",
-      "meaning": "Available energy resilience"
-    },
-    {
-      "key": "water",
-      "meaning": "Water system resilience"
-    },
-    {
-      "key": "food",
-      "meaning": "Food system resilience"
-    },
-    {
-      "key": "technology",
-      "meaning": "Technical capacity and accumulated capability"
-    },
-    {
-      "key": "cq",
-      "meaning": "Civilization quality: the colony's ability to adapt, coordinate, and make durable collective progress"
-    }
+  "variables": [
+    "population",
+    "energy",
+    "water",
+    "food",
+    "technology",
+    "cq",
+    "citizen specialization",
+    "event shocks"
   ],
-  "secondary_observations": [
-    "citizen health and energy",
-    "profession diversity and contribution",
-    "meaningful citizen memories",
-    "relationship structure",
-    "frequency and severity of civilization events",
-    "chronicle continuity"
-  ],
-  "experiment_rules": {
-    "one_tick_equals_one_sol": true,
-    "deterministic_seeded_events": true,
-    "simulation_engine_is_source_of_truth": true,
-    "chronicle_is_observational_not_mutational": true,
-    "no_llm_required_for_core_simulation": true
-  },
+  "metrics": ["population", "energy", "water", "food", "technology", "cq"],
+  "interventions": [],
+  "observation_window": {"value": 365, "unit": "sol"},
   "success_signals": [
     "The colony remains viable through the full observation window without deterministic collapse.",
     "Citizens develop differentiated histories instead of remaining interchangeable records.",
@@ -74,9 +43,40 @@
     "History diverges from actual simulation state.",
     "Repeated runs with the same seed produce inconsistent outcomes without an explicit source of nondeterminism."
   ],
-  "related_evolution_questions": [
-    "How should humanity build its first cross-planet civilization system?",
-    "How can a civilization balance survival, growth, technology, and collective decision quality?",
-    "What makes a settlement become a civilization rather than merely an outpost?"
-  ]
+  "result": null,
+  "metadata": {
+    "category": "multi-planet-civilization",
+    "key_question_text": "When humans establish a self-sustaining settlement on Mars, what conditions are required for it to develop into a stable and adaptive civilization?",
+    "scenario": "Mars Awakening",
+    "civilization_seed": "Explorer",
+    "start_year": 2135,
+    "primary_metrics": [
+      {"key": "population", "meaning": "Population continuity and demographic stability"},
+      {"key": "energy", "meaning": "Available energy resilience"},
+      {"key": "water", "meaning": "Water system resilience"},
+      {"key": "food", "meaning": "Food system resilience"},
+      {"key": "technology", "meaning": "Technical capacity and accumulated capability"},
+      {"key": "cq", "meaning": "Civilization quality: the colony's ability to adapt, coordinate, and make durable collective progress"}
+    ],
+    "secondary_observations": [
+      "citizen health and energy",
+      "profession diversity and contribution",
+      "meaningful citizen memories",
+      "relationship structure",
+      "frequency and severity of civilization events",
+      "chronicle continuity"
+    ],
+    "experiment_rules": {
+      "one_tick_equals_one_sol": true,
+      "deterministic_seeded_events": true,
+      "simulation_engine_is_source_of_truth": true,
+      "chronicle_is_observational_not_mutational": true,
+      "no_llm_required_for_core_simulation": true
+    },
+    "related_evolution_questions": [
+      "How should humanity build its first cross-planet civilization system?",
+      "How can a civilization balance survival, growth, technology, and collective decision quality?",
+      "What makes a settlement become a civilization rather than merely an outpost?"
+    ]
+  }
 }
