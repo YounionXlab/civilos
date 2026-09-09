@@ -1,0 +1,35 @@
+{
+  "id": "INS-001",
+  "title": "Ares Alpha baseline viability",
+  "statement": "Under the current EXP-CIV-001 baseline model and seed, Ares Alpha remained viable for 365 Sols while material reserves, technology, and CQ increased together; this is provisional evidence that material resilience and coordinated capability can reinforce one another in the current CivilOS model.",
+  "source_experiments": ["EXP-CIV-001"],
+  "source_questions": ["Q-024"],
+  "confidence": 0.55,
+  "status": "provisional",
+  "evidence": [
+    "results/exp-civ-001/baseline-001.json records a completed 365-Sol run with 365 observations.",
+    "Population remained at 20 throughout the run and no configured failure signal was met.",
+    "The minimum observed energy, water, and food values were 82.8, 79.1, and 91.6 respectively.",
+    "Technology increased from 34.89 to 100.0 and CQ increased from 0.42 to 1.0.",
+    "All five configured success signals were met in the deterministic baseline report."
+  ],
+  "limitations": [
+    "This insight is based on one deterministic baseline configuration and one seed; it is not yet a cross-scenario conclusion.",
+    "Energy, water, food, technology, and CQ approach or reach model ceilings, suggesting the current baseline may be too forgiving to measure long-run trade-offs well.",
+    "Population remained flat, so the run does not yet test demographic growth, decline, or replacement dynamics.",
+    "Several event types repeat on a fixed five-Sol cycle, limiting the diversity and realism of shocks.",
+    "The current signal evaluator is rule-based and should not be treated as independent scientific validation."
+  ],
+  "implications": [
+    "The baseline is useful as a deterministic control case for future comparison experiments.",
+    "The next experiments should vary resource margins, event severity, profession composition, and institutional/CQ conditions rather than treating this baseline result as validated truth.",
+    "Ceiling saturation should be reduced or stress scenarios introduced before drawing stronger conclusions about sustainability."
+  ],
+  "decision_relevance": [
+    "Use EXP-CIV-001 baseline-001 as the control run for Ares Alpha experiment design.",
+    "Do not promote this insight beyond provisional status until comparison runs reproduce or challenge the pattern.",
+    "Prioritize stress-test and sensitivity experiments before using Ares Alpha findings in YICE or real-world decision guidance."
+  ],
+  "created_at": "2026-09-09T17:46:19Z",
+  "updated_at": "2026-09-09T17:46:19Z"
+}
