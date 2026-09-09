@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civilos.x-lab/schemas/preregistration.schema.json",
+  "title": "X-LAB Experiment Preregistration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "experiment_id", "research_question_ids", "hypothesis", "study_type", "primary_outcomes", "analysis_plan", "frozen_at"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^PRE-EXP-[A-Z]+-[0-9]{3}-[0-9]{3}$"},
+    "experiment_id": {"type": "string", "pattern": "^EXP-[A-Z]+-[0-9]{3}$"},
+    "research_question_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^Q-[0-9]{3}$"}, "uniqueItems": true},
+    "hypothesis": {"type": "string", "minLength": 10},
+    "study_type": {"type": "string", "enum": ["observation", "comparison", "intervention", "factorial", "sensitivity", "stress", "boundary", "replication", "ablation", "monte_carlo"]},
+    "control": {"type": ["string", "null"]},
+    "independent_variables": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "dependent_variables": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "confounders": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "primary_outcomes": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+    "secondary_outcomes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "sample_or_runs_plan": {"type": "string"},
+    "randomization_plan": {"type": ["string", "null"]},
+    "measurement_plan": {"type": "string"},
+    "analysis_plan": {"type": "string", "minLength": 10},
+    "stopping_rule": {"type": ["string", "null"]},
+    "robustness_plan": {"type": ["string", "null"]},
+    "replication_plan": {"type": ["string", "null"]},
+    "prior_evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^EVD-[0-9]{3,}$"}, "uniqueItems": true},
+    "notes": {"type": "string"},
+    "frozen_at": {"type": "string", "format": "date-time"},
+    "schema_version": {"type": "string"}
+  }
+}
