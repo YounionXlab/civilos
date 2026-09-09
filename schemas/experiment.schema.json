@@ -36,7 +36,7 @@
         "variable_isolation": {"type": "integer", "minimum": 0, "maximum": 10},
         "sample_size_repetitions": {"type": "integer", "minimum": 0, "maximum": 10},
         "measurement_validity": {"type": "integer", "minimum": 0, "maximum": 10},
-        "analysis_rigor": {"type": "integer", "minimum": 0, "maximum": 10},
+        "statistical_rigor": {"type": "integer", "minimum": 0, "maximum": 10},
         "reproducibility": {"type": "integer", "minimum": 0, "maximum": 10},
         "robustness_sensitivity": {"type": "integer", "minimum": 0, "maximum": 10},
         "external_validity": {"type": "integer", "minimum": 0, "maximum": 10}
