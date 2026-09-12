@@ -1,0 +1,457 @@
+{
+  "schema_version": "2.0.0",
+  "registry_id": "XLAB-HUMAN-EVOLUTION-QUESTIONS",
+  "authority": "YounionXlab/x-lab-omni",
+  "source_path": "src/lib/research-agenda.ts",
+  "source_ref": "main",
+  "source_blob_sha": "f6257bfab34b3ec037b01b4791ecb59d6f1b7d14",
+  "question_count": 63,
+  "generated_at": "2026-09-12",
+  "notes": [
+    "Read-only projection for CivilOS reference validation.",
+    "Canonical wording and identifiers are governed by the X-LAB evolution-driven system."
+  ],
+  "questions": [
+    {
+      "id": "Q-001",
+      "theme_id": "T-001",
+      "millennium_id": "M-003",
+      "mode": "mixed",
+      "question_cn": "当AI越来越强，人如何同步提升自己的认知能力，而不是成为AI进化的旁观者？"
+    },
+    {
+      "id": "Q-002",
+      "theme_id": "T-001",
+      "millennium_id": "M-003",
+      "mode": "scientific",
+      "question_cn": "为什么同样的AI工具，不同的人会产生千差万别的结果？人的认知结构、思维方式、关注点与判断力如何决定人机联合能力圈？"
+    },
+    {
+      "id": "Q-003",
+      "theme_id": "T-001",
+      "millennium_id": "M-003",
+      "mode": "scientific",
+      "question_cn": "人的智力上限能否进一步突破？教育、AI、神经科学、脑机接口等能否增强人的认知能力？"
+    },
+    {
+      "id": "Q-004",
+      "theme_id": "T-001",
+      "millennium_id": "M-003",
+      "mode": "scientific",
+      "question_cn": "AI能否成为人的‘认知镜子’，帮助人发现自己的惯性、盲区、选择与因果？"
+    },
+    {
+      "id": "Q-005",
+      "theme_id": "T-001",
+      "millennium_id": "M-003",
+      "mode": "scientific",
+      "question_cn": "人的情绪系统、自我认知与自我调节能力能否进一步进化？"
+    },
+    {
+      "id": "Q-006",
+      "theme_id": "T-002",
+      "millennium_id": "M-003",
+      "mode": "normative",
+      "question_cn": "当知识不再稀缺、答案越来越廉价，人为什么还要学习？"
+    },
+    {
+      "id": "Q-007",
+      "theme_id": "T-002",
+      "millennium_id": "M-003",
+      "mode": "mixed",
+      "question_cn": "AI时代真正应该训练人的是什么：记忆、问题意识、判断力、世界模型、创造力、审美、协作还是实践能力？"
+    },
+    {
+      "id": "Q-008",
+      "theme_id": "T-002",
+      "millennium_id": "M-003",
+      "mode": "engineering",
+      "question_cn": "学校和传统教育组织形态是否需要被重新设计？"
+    },
+    {
+      "id": "Q-009",
+      "theme_id": "T-006",
+      "millennium_id": "M-007",
+      "mode": "scientific",
+      "question_cn": "人类能否拥有更长的健康寿命？衰老是否可以被显著干预？"
+    },
+    {
+      "id": "Q-010",
+      "theme_id": "T-007",
+      "millennium_id": "M-010",
+      "mode": "mixed",
+      "question_cn": "基因技术、人工器官、脑机接口、神经增强与AI是否会改变‘人’的定义？"
+    },
+    {
+      "id": "Q-011",
+      "theme_id": "T-007",
+      "millennium_id": "M-010",
+      "mode": "normative",
+      "question_cn": "人类是否可能主动设计自己的下一版本？如果可以，谁来定义‘更好的人’？"
+    },
+    {
+      "id": "Q-012",
+      "theme_id": "T-009",
+      "millennium_id": "M-005",
+      "mode": "engineering",
+      "question_cn": "AI时代，公司这种组织形式会不会被重新发明？"
+    },
+    {
+      "id": "Q-013",
+      "theme_id": "T-009",
+      "millennium_id": "M-005",
+      "mode": "engineering",
+      "question_cn": "当一个人可以拥有大量AI Agent、全球供应链和自动化能力，未来最小经济组织是什么？"
+    },
+    {
+      "id": "Q-014",
+      "theme_id": "T-010",
+      "millennium_id": "M-005",
+      "mode": "engineering",
+      "question_cn": "人类能否建立比今天更高效、更公平、更具创造力的协作机制？"
+    },
+    {
+      "id": "Q-015",
+      "theme_id": "T-010",
+      "millennium_id": "M-005",
+      "mode": "mixed",
+      "question_cn": "人类为什么反复陷入战争、剥削、零和竞争和组织内耗？是否存在更好的冲突解决方案？"
+    },
+    {
+      "id": "Q-016",
+      "theme_id": "T-011",
+      "millennium_id": "M-006",
+      "mode": "mixed",
+      "question_cn": "当AI、机器人和自动化不断降低生产成本，真正的稀缺性会转移到哪里？"
+    },
+    {
+      "id": "Q-017",
+      "theme_id": "T-011",
+      "millennium_id": "M-006",
+      "mode": "mixed",
+      "question_cn": "AI时代的财富究竟是什么？资本、产权、公司、工资和资产会出现怎样的新形态？"
+    },
+    {
+      "id": "Q-018",
+      "theme_id": "T-011",
+      "millennium_id": "M-006",
+      "mode": "normative",
+      "question_cn": "当生产力高度自动化后，人为什么工作？价值创造和财富分配机制应该如何演进？"
+    },
+    {
+      "id": "Q-019",
+      "theme_id": "T-013",
+      "millennium_id": "M-008",
+      "mode": "engineering",
+      "question_cn": "如果今天重新面对‘大禹治水’级别的超大规模洪灾，人类能否利用AI、卫星、数字孪生、现代工程和组织能力做得更好？"
+    },
+    {
+      "id": "Q-020",
+      "theme_id": "T-013",
+      "millennium_id": "M-008",
+      "mode": "engineering",
+      "question_cn": "如果重新面对中世纪黑死病级别的大瘟疫，现代文明能否更快发现、预测、研发、组织和恢复？"
+    },
+    {
+      "id": "Q-021",
+      "theme_id": "T-013",
+      "millennium_id": "M-008",
+      "mode": "engineering",
+      "question_cn": "面对极端气候、能源危机、粮食危机、重大自然灾害乃至AI系统性风险，人类文明能否保持稳定运行？"
+    },
+    {
+      "id": "Q-022",
+      "theme_id": "T-012",
+      "millennium_id": "M-005",
+      "mode": "mixed",
+      "question_cn": "技术已经进步数百倍，我们的组织、协作和治理能力是否实现了同等级别的进化？"
+    },
+    {
+      "id": "Q-023",
+      "theme_id": "T-012",
+      "millennium_id": "M-005",
+      "mode": "mixed",
+      "question_cn": "几十亿拥有不同利益的人，如何做出更好的共同决策？"
+    },
+    {
+      "id": "Q-024",
+      "theme_id": "T-012",
+      "millennium_id": "M-005",
+      "mode": "engineering",
+      "question_cn": "AI、模拟系统和实时社会数据能否催生新的治理技术？"
+    },
+    {
+      "id": "Q-025",
+      "theme_id": "T-015",
+      "millennium_id": "M-009",
+      "mode": "engineering",
+      "question_cn": "一个真正具备行星级治理能力的文明，需要什么样的感知、预测、决策、协调和执行系统？"
+    },
+    {
+      "id": "Q-026",
+      "theme_id": "T-004",
+      "millennium_id": "M-001",
+      "mode": "engineering",
+      "question_cn": "在AI生成内容爆炸的时代，人类如何判断什么是真的、什么值得相信？"
+    },
+    {
+      "id": "Q-027",
+      "theme_id": "T-004",
+      "millennium_id": "M-001",
+      "mode": "engineering",
+      "question_cn": "一个文明如何维护自己的‘信息免疫系统’？"
+    },
+    {
+      "id": "Q-028",
+      "theme_id": "T-004",
+      "millennium_id": "M-001",
+      "mode": "mixed",
+      "question_cn": "不同群体如何保持最低限度的共同事实与共同现实（Shared Reality），从而继续协作？"
+    },
+    {
+      "id": "Q-029",
+      "theme_id": "T-015",
+      "millennium_id": "M-009",
+      "mode": "engineering",
+      "question_cn": "行星级治理能力需要跨越哪些感知、预测、协调、执行与合法性门槛？"
+    },
+    {
+      "id": "Q-030",
+      "theme_id": "T-015",
+      "millennium_id": "M-009",
+      "mode": "engineering",
+      "question_cn": "我们能否理解并协调地球的能源、水、生态、气候、人口、城市和资源循环？"
+    },
+    {
+      "id": "Q-031",
+      "theme_id": "T-015",
+      "millennium_id": "M-009",
+      "mode": "mixed",
+      "question_cn": "人类如何从地球环境的被动使用者，成为具备行星尺度感知、协调、修复和风险管理能力的文明？"
+    },
+    {
+      "id": "Q-032",
+      "theme_id": "T-016",
+      "millennium_id": "M-009",
+      "mode": "normative",
+      "question_cn": "一个高级文明应该如何对待其他生命、生态系统、人工生命以及未来可能出现的新生命形式？"
+    },
+    {
+      "id": "Q-033",
+      "theme_id": "T-015",
+      "millennium_id": "M-009",
+      "mode": "mixed",
+      "question_cn": "人类未来是否可能安全地进行行星级环境改造？"
+    },
+    {
+      "id": "Q-034",
+      "theme_id": "T-017",
+      "millennium_id": "M-009",
+      "mode": "engineering",
+      "question_cn": "人类如何真正离开地球长期生存，而不是依靠地球持续输血的短期驻留？"
+    },
+    {
+      "id": "Q-035",
+      "theme_id": "T-017",
+      "millennium_id": "M-009",
+      "mode": "engineering",
+      "question_cn": "一个地外人类社会如何实现能源、食物、空气、水、工业、医疗、生育、教育和治理的自主循环？"
+    },
+    {
+      "id": "Q-036",
+      "theme_id": "T-017",
+      "millennium_id": "M-009",
+      "mode": "engineering",
+      "question_cn": "月球、火星以及其他天体能否形成真正可持续的人类文明节点？"
+    },
+    {
+      "id": "Q-037",
+      "theme_id": "T-017",
+      "millennium_id": "M-009",
+      "mode": "mixed",
+      "question_cn": "一个文明达到哪些技术、人口、经济、自主循环与政治自治阈值，才可以被称为真正的多行星文明？"
+    },
+    {
+      "id": "Q-038",
+      "theme_id": "T-008",
+      "millennium_id": "M-004",
+      "mode": "normative",
+      "question_cn": "如果出现全面超过人类的机器智能，人类的角色和价值是什么？"
+    },
+    {
+      "id": "Q-039",
+      "theme_id": "T-020",
+      "millennium_id": "M-010",
+      "mode": "normative",
+      "question_cn": "人的价值是否来自智力，还是来自意识、体验、创造、情感、关系或生命本身？"
+    },
+    {
+      "id": "Q-040",
+      "theme_id": "T-008",
+      "millennium_id": "M-004",
+      "mode": "mixed",
+      "question_cn": "人与AI最终是工具关系、伙伴关系、共生关系，还是会形成新的文明结构？"
+    },
+    {
+      "id": "Q-041",
+      "theme_id": "T-019",
+      "millennium_id": "M-002",
+      "mode": "scientific",
+      "question_cn": "意识究竟是什么？自我是如何形成的？"
+    },
+    {
+      "id": "Q-042",
+      "theme_id": "T-008",
+      "millennium_id": "M-004",
+      "mode": "mixed",
+      "question_cn": "AI是否可能拥有意识？人工生命是否应该拥有某种权利？"
+    },
+    {
+      "id": "Q-043",
+      "theme_id": "T-019",
+      "millennium_id": "M-002",
+      "mode": "normative",
+      "question_cn": "如果一个人的记忆、人格和认知结构能够被复制，复制出来的存在还是不是‘这个人’？"
+    },
+    {
+      "id": "Q-044",
+      "theme_id": "T-019",
+      "millennium_id": "M-002",
+      "mode": "mixed",
+      "question_cn": "一个人的哪些信息和过程必须被保留，才能维持人格、记忆与身份连续性；所谓‘意识上传’究竟意味着延续、复制还是新生命？"
+    },
+    {
+      "id": "Q-045",
+      "theme_id": "T-005",
+      "millennium_id": "M-001",
+      "mode": "mixed",
+      "question_cn": "文明如何面对自己暂时完全无法理解的事物？"
+    },
+    {
+      "id": "Q-046",
+      "theme_id": "T-005",
+      "millennium_id": "M-001",
+      "mode": "engineering",
+      "question_cn": "当旧世界模型无法解释新环境时，文明如何避免系统性误判？"
+    },
+    {
+      "id": "Q-047",
+      "theme_id": "T-005",
+      "millennium_id": "M-001",
+      "mode": "scientific",
+      "question_cn": "一个高级文明能否在‘不知道答案’的情况下仍然做出相对正确的行动？"
+    },
+    {
+      "id": "Q-048",
+      "theme_id": "T-005",
+      "millennium_id": "M-001",
+      "mode": "engineering",
+      "question_cn": "如何建立文明级的认知韧性与持续学习能力？"
+    },
+    {
+      "id": "Q-049",
+      "theme_id": "T-020",
+      "millennium_id": "M-010",
+      "mode": "normative",
+      "question_cn": "如果AI承担大量工作、物质生产高度自动化、人的寿命显著延长，人为什么活着？"
+    },
+    {
+      "id": "Q-050",
+      "theme_id": "T-020",
+      "millennium_id": "M-010",
+      "mode": "normative",
+      "question_cn": "当工作、生存竞争等传统意义来源发生变化，人类如何建立新的意义系统？"
+    },
+    {
+      "id": "Q-051",
+      "theme_id": "T-020",
+      "millennium_id": "M-010",
+      "mode": "normative",
+      "question_cn": "我们不仅要让人活得更久、更强，还要回答：如何让更长、更强的人生值得活？"
+    },
+    {
+      "id": "Q-052",
+      "theme_id": "T-020",
+      "millennium_id": "M-010",
+      "mode": "mixed",
+      "question_cn": "人类是否正在从‘环境选择人’进入‘人类开始选择自己’的时代？"
+    },
+    {
+      "id": "Q-053",
+      "theme_id": "T-020",
+      "millennium_id": "M-010",
+      "mode": "normative",
+      "question_cn": "当我们拥有修改基因、身体、认知、AI伙伴乃至创造新生命的能力时，如何避免进化能力本身成为灾难？"
+    },
+    {
+      "id": "Q-054",
+      "theme_id": "T-020",
+      "millennium_id": "M-010",
+      "mode": "mixed",
+      "question_cn": "人类如何获得‘驾驭自身进化’的能力？"
+    },
+    {
+      "id": "Q-055",
+      "theme_id": "T-018",
+      "millennium_id": "M-009",
+      "mode": "engineering",
+      "question_cn": "当人类的生存与活动边界从地球扩展到地月空间，我们应当如何建设第一个跨天体文明系统？"
+    },
+    {
+      "id": "Q-056",
+      "theme_id": "T-003",
+      "millennium_id": "M-001",
+      "mode": "engineering",
+      "question_cn": "科学方法本身能否进化为人机协同、机器可执行、可复现并持续自我纠错的下一代发现系统？"
+    },
+    {
+      "id": "Q-057",
+      "theme_id": "T-005",
+      "millennium_id": "M-001",
+      "mode": "engineering",
+      "question_cn": "人类能否建立持续更新、可校准、可推演并接受现实反馈的‘文明世界模型’？"
+    },
+    {
+      "id": "Q-058",
+      "theme_id": "T-012",
+      "millennium_id": "M-005",
+      "mode": "engineering",
+      "question_cn": "当机器智能的决策与行动速度超过制度的理解与治理速度时，人类如何保持有效控制？"
+    },
+    {
+      "id": "Q-059",
+      "theme_id": "T-014",
+      "millennium_id": "M-008",
+      "mode": "engineering",
+      "question_cn": "一个文明如何跨世代、跨媒介、跨灾难保存关键知识、能力、价值与制度记忆？"
+    },
+    {
+      "id": "Q-060",
+      "theme_id": "T-005",
+      "millennium_id": "M-001",
+      "mode": "scientific",
+      "question_cn": "人类如何发现自己的世界模型正在失效，并校准‘我们可能错了’的概率？"
+    },
+    {
+      "id": "Q-061",
+      "theme_id": "T-010",
+      "millennium_id": "M-005",
+      "mode": "engineering",
+      "question_cn": "人类能否把合作从社会现象升级为可设计、可测试、可扩展的‘协作工程’？"
+    },
+    {
+      "id": "Q-062",
+      "theme_id": "T-012",
+      "millennium_id": "M-005",
+      "mode": "mixed",
+      "question_cn": "AI时代新的认知权力、模型权力与基础设施权力如何形成、分配与制衡？"
+    },
+    {
+      "id": "Q-063",
+      "theme_id": "T-013",
+      "millennium_id": "M-008",
+      "mode": "scientific",
+      "question_cn": "文明是否存在可测量的‘生命体征’与失稳前兆，并能支持提前干预？"
+    }
+  ]
+}

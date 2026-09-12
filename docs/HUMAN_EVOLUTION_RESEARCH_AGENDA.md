@@ -1,4 +1,11 @@
-# X-LAB Human Evolution Research Agenda
+# X-LAB Human Evolution Research Agenda — Legacy 30-Question Snapshot
+
+> [!IMPORTANT]
+> This file preserves the original 30-question CivilOS research agenda as a historical snapshot.
+> The active ontology is X-LAB's 63-question registry, projected at `research/canonical_question_refs.json`.
+> Use `research/question_id_migration_v2.json` to translate historical IDs. In particular,
+> historical Q-024 (Sustainable Mars Civilization) maps to canonical Q-036; canonical Q-024
+> now means AI/simulation/realtime-data-enabled governance technology.
 
 ## Purpose
 

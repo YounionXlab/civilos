@@ -39,16 +39,34 @@ def _ensure_unique(values: list[str], label: str) -> None:
 
 
 def validate_research_data(root: Path = ROOT) -> None:
-    questions_doc = _load_json(root / "research" / "questions.json")
+    legacy_questions_doc = _load_json(root / "research" / "questions.json")
+    canonical_questions_doc = _load_json(root / "research" / "canonical_question_refs.json")
+    migration_doc = _load_json(root / "research" / "question_id_migration_v2.json")
     mappings_doc = _load_json(root / "research" / "mappings.json")
 
-    questions = questions_doc.get("questions", [])
-    question_ids = [item["id"] for item in questions]
-    _ensure_unique(question_ids, "question IDs")
+    legacy_questions = legacy_questions_doc.get("questions", [])
+    legacy_question_ids = [item["id"] for item in legacy_questions]
+    _ensure_unique(legacy_question_ids, "question IDs")
+    canonical_questions = canonical_questions_doc.get("questions", [])
+    question_ids = [item["id"] for item in canonical_questions]
+    _ensure_unique(question_ids, "canonical question IDs")
+    if len(question_ids) != 63:
+        raise ResearchDataError(f"Canonical question registry must contain 63 questions, found {len(question_ids)}")
 
     question_schema = root / "schemas" / "question.schema.json"
-    for item in questions:
-        _validate(item, question_schema, f"question {item.get('id', '<unknown>')}")
+    for item in legacy_questions:
+        _validate(item, question_schema, f"legacy question {item.get('id', '<unknown>')}")
+
+    migration_items = migration_doc.get("mappings", [])
+    legacy_migration_ids = [item["legacy_id"] for item in migration_items]
+    _ensure_unique(legacy_migration_ids, "legacy migration IDs")
+    if len(legacy_migration_ids) != len(legacy_questions):
+        raise ResearchDataError("Every legacy question must have exactly one migration entry")
+    for item in migration_items:
+        if item["canonical_id"] not in set(question_ids):
+            raise ResearchDataError(
+                f"Migration {item['legacy_id']} references unknown canonical question {item['canonical_id']}"
+            )
 
     experiment_registry = mappings_doc.get("experiments", {})
     experiment_ids = list(experiment_registry)
@@ -66,7 +84,7 @@ def validate_research_data(root: Path = ROOT) -> None:
             if experiment_id not in experiment_id_set:
                 raise ResearchDataError(f"Unknown experiment reference: {experiment_id}")
 
-    for item in questions:
+    for item in legacy_questions:
         for experiment_id in item.get("active_experiments", []):
             if experiment_id not in experiment_id_set:
                 raise ResearchDataError(
@@ -87,6 +105,11 @@ def validate_research_data(root: Path = ROOT) -> None:
             validate_eqs(experiment.get("quality_score"), experiment.get("quality_dimensions"))
         except ValueError as exc:
             raise ResearchDataError(f"experiment {path.name} has invalid EQS: {exc}") from exc
+        for question_id in experiment.get("questions", []):
+            if question_id not in question_id_set:
+                raise ResearchDataError(
+                    f"Experiment {experiment_id} references unknown canonical question {question_id}"
+                )
         for alias in experiment.get("legacy_aliases", []):
             if alias in aliases:
                 raise ResearchDataError(f"Duplicate experiment alias: {alias}")
@@ -160,6 +183,11 @@ def validate_research_data(root: Path = ROOT) -> None:
                 validate_insight_promotion(insight)
             except PromotionError as exc:
                 raise ResearchDataError(f"insight {path.name} violates promotion rules: {exc}") from exc
+            for question_id in insight.get("source_questions", []):
+                if question_id not in question_id_set:
+                    raise ResearchDataError(
+                        f"Insight {insight['id']} references unknown canonical question {question_id}"
+                    )
             for evidence_id in insight.get("evidence_references", []):
                 if evidence_id not in evidence_ids:
                     raise ResearchDataError(

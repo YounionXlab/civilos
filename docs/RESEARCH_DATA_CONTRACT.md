@@ -55,7 +55,17 @@ Every machine-readable research object should validate against its corresponding
 
 Canonical registry:
 
+Active canonical projection:
+
+`research/canonical_question_refs.json`
+
+Historical 30-question registry (frozen):
+
 `research/questions.json`
+
+Semantic migration table:
+
+`research/question_id_migration_v2.json`
 
 A question should contain, at minimum:
 
@@ -66,7 +76,7 @@ A question should contain, at minimum:
 - maturity;
 - status.
 
-Question identifiers are immutable once referenced by experiments or insights.
+Canonical question identifiers are governed by X-LAB and are immutable once referenced. Active CivilOS objects must resolve against the 63-question projection; historical identifiers resolve only through the migration table.
 
 ---
 
@@ -357,7 +367,9 @@ Schema migration should preserve old identifiers and traceability.
 
 CI should validate:
 
-- `research/questions.json` against the question schema;
+- the frozen legacy `research/questions.json` against the legacy question schema;
+- the 63-question canonical projection for uniqueness and reference resolution;
+- completeness of the 30-to-63 migration table;
 - every canonical experiment definition against the experiment schema;
 - every insight object against the insight schema;
 - every evidence source against the evidence source schema;

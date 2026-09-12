@@ -1,17 +1,27 @@
 {
   "package_id": "PKG-CIV-001",
   "title": "Ares Alpha Research Package",
-  "question_ids": ["Q-024"],
-  "preregistration_ids": ["PRE-EXP-CIV-001-001"],
-  "experiment_ids": ["EXP-CIV-001"],
+  "question_ids": [
+    "Q-036"
+  ],
+  "preregistration_ids": [
+    "PRE-EXP-CIV-001-001"
+  ],
+  "experiment_ids": [
+    "EXP-CIV-001"
+  ],
   "result_paths": [
     "results/exp-civ-001/baseline-001.json",
     "results/exp-civ-001/comparative-001/baseline.json",
     "results/exp-civ-001/comparative-001/comparison.json"
   ],
   "report_paths": [],
-  "insight_ids": ["INS-001"],
-  "evidence_item_ids": ["EVI-CIV-001"],
+  "insight_ids": [
+    "INS-001"
+  ],
+  "evidence_item_ids": [
+    "EVI-CIV-001"
+  ],
   "runtime": "CivilOS",
   "code_version": "b42f3f42760cbf39a128acc6fa6ac562ae0c37aa",
   "reproducibility_status": "reproducible",

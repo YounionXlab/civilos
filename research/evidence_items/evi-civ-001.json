@@ -5,11 +5,17 @@
   "source": "NASA Technical Reports Server",
   "url": "https://ntrs.nasa.gov/citations/20170010347",
   "doi_or_accession": "20170010347",
-  "authors_or_org": ["NASA"],
+  "authors_or_org": [
+    "NASA"
+  ],
   "published_at": null,
   "accessed_at": "2026-09-09T19:16:00Z",
-  "linked_questions": ["Q-024"],
-  "linked_experiments": ["EXP-CIV-001"],
+  "linked_questions": [
+    "Q-036"
+  ],
+  "linked_experiments": [
+    "EXP-CIV-001"
+  ],
   "linked_insights": [],
   "provenance_note": "Official NASA NTRS record reviewed as external contextual evidence on Mars life-support reliability, long-duration testing, and the importance of detecting unexpected failure modes. It does not independently validate CivilOS or INS-001.",
   "verification_status": "reviewed",

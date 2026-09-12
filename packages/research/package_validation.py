@@ -44,7 +44,9 @@ def _ids(root: Path, directory: str, key: str) -> set[str]:
 
 
 def validate_research_packages(root: Path = ROOT) -> None:
-    questions = _load(root / "research" / "questions.json").get("questions", [])
+    canonical_path = root / "research" / "canonical_question_refs.json"
+    question_path = canonical_path if canonical_path.exists() else root / "research" / "questions.json"
+    questions = _load(question_path).get("questions", [])
     question_ids = {item["id"] for item in questions}
 
     experiment_ids = set(_load(root / "research" / "mappings.json").get("experiments", {}))
