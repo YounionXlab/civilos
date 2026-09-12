@@ -26,6 +26,7 @@ def test_dangling_result_path_fails(tmp_path: Path) -> None:
     # Minimal copy of the canonical package validation surface.
     for rel in [
         "research/questions.json",
+        "research/canonical_question_refs.json",
         "research/mappings.json",
         "research/preregistrations/pre-exp-civ-001-001.json",
         "research/evidence_items/evi-civ-001.json",
