@@ -1,7 +1,9 @@
 {
   "id": "PRE-EXP-CIV-001-001",
   "experiment_id": "EXP-CIV-001",
-  "research_question_ids": ["Q-024"],
+  "research_question_ids": [
+    "Q-036"
+  ],
   "hypothesis": "Ares Alpha will exhibit a reproducible failure boundary when compound resource shocks, sustained production loss, low coordination, and capability loss jointly exceed the colony's recovery capacity.",
   "study_type": "boundary",
   "control": "Current EXP-CIV-001 baseline scenario under the canonical seed and initial conditions.",
