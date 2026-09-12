@@ -45,6 +45,8 @@ def validate_research_data(root: Path = ROOT) -> None:
     mappings_doc = _load_json(root / "research" / "mappings.json")
 
     legacy_questions = legacy_questions_doc.get("questions", [])
+    legacy_question_ids = [item["id"] for item in legacy_questions]
+    _ensure_unique(legacy_question_ids, "question IDs")
     canonical_questions = canonical_questions_doc.get("questions", [])
     question_ids = [item["id"] for item in canonical_questions]
     _ensure_unique(question_ids, "canonical question IDs")
