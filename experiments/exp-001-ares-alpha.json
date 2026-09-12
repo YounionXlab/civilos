@@ -1,19 +1,32 @@
 {
   "id": "EXP-CIV-001",
-  "legacy_aliases": ["EXP-001"],
+  "legacy_aliases": [
+    "EXP-001"
+  ],
   "slug": "ares-alpha",
   "title": "Ares Alpha",
   "runtime": "CivilOS",
   "status": "active",
-  "questions": ["Q-024"],
+  "questions": [
+    "Q-036"
+  ],
   "hypothesis": "A Mars settlement becomes civilization-like when material resilience, technological capacity, citizen specialization, collective decision quality, and historical memory reinforce one another over time.",
   "world_seed": "ARES-ALPHA-001",
   "random_seed": 20260707,
   "initial_conditions": {
     "population": 20,
-    "energy_range": [70, 90],
-    "water_range": [70, 90],
-    "food_range": [80, 95],
+    "energy_range": [
+      70,
+      90
+    ],
+    "water_range": [
+      70,
+      90
+    ],
+    "food_range": [
+      80,
+      95
+    ],
     "technology": 34
   },
   "variables": [
@@ -26,9 +39,19 @@
     "citizen specialization",
     "event shocks"
   ],
-  "metrics": ["population", "energy", "water", "food", "technology", "cq"],
+  "metrics": [
+    "population",
+    "energy",
+    "water",
+    "food",
+    "technology",
+    "cq"
+  ],
   "interventions": [],
-  "observation_window": {"value": 365, "unit": "sol"},
+  "observation_window": {
+    "value": 365,
+    "unit": "sol"
+  },
   "success_signals": [
     "The colony remains viable through the full observation window without deterministic collapse.",
     "Citizens develop differentiated histories instead of remaining interchangeable records.",
@@ -51,12 +74,30 @@
     "civilization_seed": "Explorer",
     "start_year": 2135,
     "primary_metrics": [
-      {"key": "population", "meaning": "Population continuity and demographic stability"},
-      {"key": "energy", "meaning": "Available energy resilience"},
-      {"key": "water", "meaning": "Water system resilience"},
-      {"key": "food", "meaning": "Food system resilience"},
-      {"key": "technology", "meaning": "Technical capacity and accumulated capability"},
-      {"key": "cq", "meaning": "Civilization quality: the colony's ability to adapt, coordinate, and make durable collective progress"}
+      {
+        "key": "population",
+        "meaning": "Population continuity and demographic stability"
+      },
+      {
+        "key": "energy",
+        "meaning": "Available energy resilience"
+      },
+      {
+        "key": "water",
+        "meaning": "Water system resilience"
+      },
+      {
+        "key": "food",
+        "meaning": "Food system resilience"
+      },
+      {
+        "key": "technology",
+        "meaning": "Technical capacity and accumulated capability"
+      },
+      {
+        "key": "cq",
+        "meaning": "Civilization quality: the colony's ability to adapt, coordinate, and make durable collective progress"
+      }
     ],
     "secondary_observations": [
       "citizen health and energy",
