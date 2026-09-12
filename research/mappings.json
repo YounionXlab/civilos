@@ -1,0 +1,103 @@
+{
+  "version": "2.0",
+  "mappings": [
+    {
+      "question_id": "Q-015",
+      "experiments": [
+        "EXP-CIV-003"
+      ]
+    },
+    {
+      "question_id": "Q-040",
+      "experiments": [
+        "EXP-CIV-005"
+      ]
+    },
+    {
+      "question_id": "Q-025",
+      "experiments": [
+        "EXP-CIV-006"
+      ]
+    },
+    {
+      "question_id": "Q-009",
+      "experiments": [
+        "EXP-CIV-004"
+      ]
+    },
+    {
+      "question_id": "Q-021",
+      "experiments": [
+        "EXP-CIV-002"
+      ]
+    },
+    {
+      "question_id": "Q-055",
+      "experiments": [
+        "EXP-SPACE-001",
+        "EXP-ENERGY-001",
+        "EXP-GOV-001",
+        "EXP-CIV-007"
+      ]
+    },
+    {
+      "question_id": "Q-036",
+      "experiments": [
+        "EXP-CIV-001"
+      ]
+    }
+  ],
+  "experiments": {
+    "EXP-CIV-001": {
+      "name": "Ares Alpha",
+      "status": "active",
+      "runtime": "CivilOS"
+    },
+    "EXP-CIV-002": {
+      "name": "After the Flood",
+      "status": "candidate",
+      "runtime": "CivilOS"
+    },
+    "EXP-CIV-003": {
+      "name": "Zero War",
+      "status": "candidate",
+      "runtime": "CivilOS"
+    },
+    "EXP-CIV-004": {
+      "name": "The Long-Life Society",
+      "status": "candidate",
+      "runtime": "CivilOS"
+    },
+    "EXP-CIV-005": {
+      "name": "AI Majority",
+      "status": "candidate",
+      "runtime": "CivilOS"
+    },
+    "EXP-CIV-006": {
+      "name": "Earth Council",
+      "status": "candidate",
+      "runtime": "CivilOS"
+    },
+    "EXP-CIV-007": {
+      "name": "Cislunar Civilization",
+      "status": "candidate",
+      "runtime": "CivilOS"
+    },
+    "EXP-SPACE-001": {
+      "name": "Cislunar Logistics",
+      "status": "candidate",
+      "runtime": "Space Expansion Lab"
+    },
+    "EXP-ENERGY-001": {
+      "name": "Lunar Power Grid",
+      "status": "candidate",
+      "runtime": "Energy Lab"
+    },
+    "EXP-GOV-001": {
+      "name": "Multi-body Governance",
+      "status": "candidate",
+      "runtime": "Society Lab"
+    }
+  },
+  "question_registry": "research/canonical_question_refs.json"
+}

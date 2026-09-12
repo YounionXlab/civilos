@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civilos.x-lab/schemas/experiment.schema.json",
+  "title": "X-LAB Experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "runtime", "status", "questions", "hypothesis", "initial_conditions", "metrics", "observation_window"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^EXP-[A-Z]+-[0-9]{3}$"},
+    "legacy_aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "title": {"type": "string", "minLength": 3},
+    "slug": {"type": "string"},
+    "runtime": {"type": "string", "minLength": 2},
+    "status": {"type": "string", "enum": ["candidate", "planned", "active", "paused", "completed", "archived"]},
+    "questions": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^Q-[0-9]{3}$"}, "uniqueItems": true},
+    "hypothesis": {"type": "string", "minLength": 10},
+    "study_type": {"type": "string", "enum": ["observation", "comparison", "intervention", "factorial", "sensitivity", "stress", "boundary", "replication", "ablation", "monte_carlo"]},
+    "prior_evidence": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "control": {"type": ["string", "null"]},
+    "independent_variables": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "dependent_variables": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "confounders": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "measurement_definitions": {"type": "object"},
+    "analysis_plan": {"type": ["string", "null"]},
+    "robustness_plan": {"type": ["string", "null"]},
+    "replication_plan": {"type": ["string", "null"]},
+    "preregistered": {"type": "boolean"},
+    "quality_score": {"type": ["integer", "null"], "minimum": 0, "maximum": 100},
+    "quality_dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "question_clarity": {"type": "integer", "minimum": 0, "maximum": 10},
+        "falsifiability": {"type": "integer", "minimum": 0, "maximum": 10},
+        "control_quality": {"type": "integer", "minimum": 0, "maximum": 10},
+        "variable_isolation": {"type": "integer", "minimum": 0, "maximum": 10},
+        "sample_size_repetitions": {"type": "integer", "minimum": 0, "maximum": 10},
+        "measurement_validity": {"type": "integer", "minimum": 0, "maximum": 10},
+        "statistical_rigor": {"type": "integer", "minimum": 0, "maximum": 10},
+        "reproducibility": {"type": "integer", "minimum": 0, "maximum": 10},
+        "robustness_sensitivity": {"type": "integer", "minimum": 0, "maximum": 10},
+        "external_validity": {"type": "integer", "minimum": 0, "maximum": 10}
+      }
+    },
+    "world_seed": {"type": ["string", "null"]},
+    "random_seed": {"type": ["integer", "null"]},
+    "initial_conditions": {"type": "object"},
+    "variables": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "metrics": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+    "interventions": {"type": "array", "items": {"type": "string"}},
+    "observation_window": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {"type": "integer", "minimum": 1},
+        "unit": {"type": "string", "enum": ["tick", "sol", "day", "year", "generation"]}
+      },
+      "additionalProperties": false
+    },
+    "success_signals": {"type": "array", "items": {"type": "string"}},
+    "failure_signals": {"type": "array", "items": {"type": "string"}},
+    "result": {"type": ["string", "null"], "enum": ["supported", "partially_supported", "not_supported", "inconclusive", null]},
+    "metadata": {"type": "object"}
+  }
+}

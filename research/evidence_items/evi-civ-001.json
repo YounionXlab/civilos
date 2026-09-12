@@ -1,0 +1,23 @@
+{
+  "evidence_id": "EVI-CIV-001",
+  "type": "report",
+  "title": "Developing Reliable Life Support for Mars",
+  "source": "NASA Technical Reports Server",
+  "url": "https://ntrs.nasa.gov/citations/20170010347",
+  "doi_or_accession": "20170010347",
+  "authors_or_org": [
+    "NASA"
+  ],
+  "published_at": null,
+  "accessed_at": "2026-09-09T19:16:00Z",
+  "linked_questions": [
+    "Q-036"
+  ],
+  "linked_experiments": [
+    "EXP-CIV-001"
+  ],
+  "linked_insights": [],
+  "provenance_note": "Official NASA NTRS record reviewed as external contextual evidence on Mars life-support reliability, long-duration testing, and the importance of detecting unexpected failure modes. It does not independently validate CivilOS or INS-001.",
+  "verification_status": "reviewed",
+  "license_or_access_note": "Public NASA Technical Reports Server record; reuse terms should be checked at the source before redistribution."
+}

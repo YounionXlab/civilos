@@ -1,0 +1,62 @@
+{
+  "id": "PRE-EXP-CIV-001-001",
+  "experiment_id": "EXP-CIV-001",
+  "research_question_ids": [
+    "Q-036"
+  ],
+  "hypothesis": "Ares Alpha will exhibit a reproducible failure boundary when compound resource shocks, sustained production loss, low coordination, and capability loss jointly exceed the colony's recovery capacity.",
+  "study_type": "boundary",
+  "control": "Current EXP-CIV-001 baseline scenario under the canonical seed and initial conditions.",
+  "independent_variables": [
+    "initial resource reserves",
+    "shock magnitude",
+    "shock frequency",
+    "sustained production loss",
+    "starting CQ",
+    "technology impairment",
+    "profession loss"
+  ],
+  "dependent_variables": [
+    "population",
+    "energy",
+    "water",
+    "food",
+    "technology",
+    "cq",
+    "recovery time",
+    "collapse occurrence"
+  ],
+  "confounders": [
+    "fixed event cadence",
+    "resource ceiling saturation",
+    "single model structure",
+    "deterministic seed effects",
+    "flat demographic mechanics"
+  ],
+  "primary_outcomes": [
+    "collapse occurrence",
+    "minimum energy",
+    "minimum water",
+    "minimum food",
+    "population loss",
+    "failure-to-recover within the observation window"
+  ],
+  "secondary_outcomes": [
+    "technology trajectory",
+    "cq trajectory",
+    "citizen health mean",
+    "citizen energy mean",
+    "recovery time after each shock"
+  ],
+  "sample_or_runs_plan": "Run a deterministic parameter sweep across predefined stress levels, then repeat boundary-adjacent configurations across multiple seeds before interpreting a stable boundary.",
+  "randomization_plan": "The first sweep uses fixed canonical seeds for reproducibility; boundary-adjacent follow-up runs must use multiple declared seeds rather than selecting favorable outcomes.",
+  "measurement_plan": "Capture one observation per Sol using the existing Experiment Runtime and record every runtime intervention explicitly in the event stream.",
+  "analysis_plan": "Estimate the transition from recovery to non-recovery by scenario, compare minima and recovery times with baseline, and report the lowest stress configuration that produces persistent collapse without changing the analysis rule after seeing outcomes.",
+  "stopping_rule": "Do not stop early because a desired boundary is found; complete the predefined sweep and observation window for all scheduled runs unless the runtime reaches an explicit terminal state.",
+  "robustness_plan": "Repeat near-boundary cases across multiple seeds and vary one stress dimension at a time to test sensitivity and interaction effects.",
+  "replication_plan": "After an internal multi-seed boundary is identified, require an independent implementation or external model/data comparison before promoting related insights to validated status.",
+  "prior_evidence_ids": [],
+  "notes": "This preregistration governs the next failure-boundary suite. It does not retroactively preregister baseline-001 or comparative-001.",
+  "frozen_at": "2026-09-09T19:10:00Z",
+  "schema_version": "1.0.0"
+}
