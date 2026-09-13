@@ -22,6 +22,12 @@ const metrics = [
   ["Technology", "technology"],
 ] as const;
 
+function statusFor(value: number) {
+  if (value < 35) return "critical";
+  if (value < 60) return "watch";
+  return "stable";
+}
+
 export default function WorldCard({ world }: Props) {
   return (
     <section className="panel world-panel">
@@ -29,6 +35,7 @@ export default function WorldCard({ world }: Props) {
         <div>
           <p className="eyebrow">{world.planet}</p>
           <h2>{world.city}</h2>
+          <p className="panel-intro">Live operational state of the colony.</p>
         </div>
         <div className="day-counter">
           <span>Day</span>
@@ -37,15 +44,31 @@ export default function WorldCard({ world }: Props) {
       </div>
 
       <div className="metric-grid">
-        {metrics.map(([label, key]) => (
-          <div className="metric" key={key}>
-            <span>{label}</span>
-            <strong>{world[key]}</strong>
-          </div>
-        ))}
-        <div className="metric">
-          <span>CQ</span>
+        {metrics.map(([label, key]) => {
+          const value = world[key];
+          const hasThreshold = key !== "population";
+          const status = hasThreshold ? statusFor(value) : "neutral";
+          return (
+            <div className={`metric metric-${status}`} key={key}>
+              <div className="metric-heading">
+                <span>{label}</span>
+                {hasThreshold ? <small>{status}</small> : null}
+              </div>
+              <strong>{value}</strong>
+              {hasThreshold ? (
+                <div aria-label={`${label}: ${value} percent, ${status}`} className="metric-track" role="img">
+                  <span style={{ width: `${Math.max(0, Math.min(100, value))}%` }} />
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+        <div className={`metric metric-${statusFor(world.cq * 100)}`}>
+          <div className="metric-heading"><span>CQ</span><small>{statusFor(world.cq * 100)}</small></div>
           <strong>{Math.round(world.cq * 100)}%</strong>
+          <div aria-label={`CQ: ${Math.round(world.cq * 100)} percent`} className="metric-track" role="img">
+            <span style={{ width: `${Math.round(world.cq * 100)}%` }} />
+          </div>
         </div>
       </div>
     </section>

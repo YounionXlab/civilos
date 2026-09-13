@@ -22,7 +22,7 @@ export default function TickButton({ apiBase }: Props) {
       if (!response.ok) {
         throw new Error("Tick request failed");
       }
-      setStatus("Done.");
+      setStatus("Day advanced. Refreshing colony state…");
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Tick request failed");
@@ -33,7 +33,7 @@ export default function TickButton({ apiBase }: Props) {
   }
 
   return (
-    <div className="tick-control">
+    <div className="tick-control" aria-live="polite">
       <button className="primary-action" disabled={isAdvancing} onClick={advance} type="button">
         {isAdvancing ? "Advancing..." : "Advance One Day"}
       </button>
