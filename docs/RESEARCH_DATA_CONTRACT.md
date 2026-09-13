@@ -76,7 +76,7 @@ A question should contain, at minimum:
 - maturity;
 - status.
 
-Canonical question identifiers are governed by X-LAB and are immutable once referenced. Active CivilOS objects must resolve against the 63-question projection; historical identifiers resolve only through the migration table.
+Canonical question identifiers are governed by X-LAB and are immutable once referenced. Active CivilOS objects must resolve against the 71-question projection; historical identifiers resolve only through the migration table.
 
 ---
 
@@ -368,7 +368,7 @@ Schema migration should preserve old identifiers and traceability.
 CI should validate:
 
 - the frozen legacy `research/questions.json` against the legacy question schema;
-- the 63-question canonical projection for uniqueness and reference resolution;
+- the 71-question canonical projection for uniqueness and reference resolution;
 - completeness of the 30-to-63 migration table;
 - every canonical experiment definition against the experiment schema;
 - every insight object against the insight schema;

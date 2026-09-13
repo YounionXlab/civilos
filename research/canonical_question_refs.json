@@ -3,13 +3,14 @@
   "registry_id": "XLAB-HUMAN-EVOLUTION-QUESTIONS",
   "authority": "YounionXlab/x-lab-omni",
   "source_path": "src/lib/research-agenda.ts",
-  "source_ref": "main",
-  "source_blob_sha": "f6257bfab34b3ec037b01b4791ecb59d6f1b7d14",
-  "question_count": 63,
-  "generated_at": "2026-09-12",
+  "source_ref": "7a1cb75e7037065d921fb6300f5eca700a7a966b",
+  "source_blob_sha": "d73048446e9f2672a14943b4e02a96c3a8356d59",
+  "question_count": 71,
+  "generated_at": "2026-09-13",
   "notes": [
     "Read-only projection for CivilOS reference validation.",
-    "Canonical wording and identifiers are governed by the X-LAB evolution-driven system."
+    "Canonical wording and identifiers are governed by the X-LAB evolution-driven system.",
+    "Agenda v1.1 life-systems expansion; pinned source commit, not a claim of production release. No new experiment, result or evidence is created."
   ],
   "questions": [
     {
@@ -452,6 +453,62 @@
       "millennium_id": "M-008",
       "mode": "scientific",
       "question_cn": "文明是否存在可测量的‘生命体征’与失稳前兆，并能支持提前干预？"
+    },
+    {
+      "id": "Q-064",
+      "theme_id": "T-021",
+      "millennium_id": "M-007",
+      "mode": "scientific",
+      "question_cn": "人体作为跨尺度、自我调节的生命系统，如何形成健康、失衡、适应与恢复状态；我们能在何种条件下可靠预测其变化？"
+    },
+    {
+      "id": "Q-065",
+      "theme_id": "T-021",
+      "millennium_id": "M-007",
+      "mode": "scientific",
+      "question_cn": "生命如何产生并演化出复杂性、多样性与共生关系；这些过程受哪些机制与约束影响？"
+    },
+    {
+      "id": "Q-066",
+      "theme_id": "T-022",
+      "millennium_id": "M-007",
+      "mode": "scientific",
+      "question_cn": "基因、调控网络与环境如何共同形成性状，如何区分相关关系、因果机制与可干预环节？"
+    },
+    {
+      "id": "Q-067",
+      "theme_id": "T-022",
+      "millennium_id": "M-007",
+      "mode": "mixed",
+      "question_cn": "如何评价基因组改变的有效性、意外影响与长期后果，并区分个体、群体和代际尺度？"
+    },
+    {
+      "id": "Q-068",
+      "theme_id": "T-023",
+      "millennium_id": "M-007",
+      "mode": "engineering",
+      "question_cn": "生命系统在多大程度上能够被设计、构建和重组，哪些性质可以预测，哪些受生物复杂性限制？"
+    },
+    {
+      "id": "Q-069",
+      "theme_id": "T-023",
+      "millennium_id": "M-007",
+      "mode": "engineering",
+      "question_cn": "如何评价工程生物系统在不同环境中的稳定性、可控性与可重复性，以及其失效边界？"
+    },
+    {
+      "id": "Q-070",
+      "theme_id": "T-006",
+      "millennium_id": "M-007",
+      "mode": "scientific",
+      "question_cn": "如何理解并调节细胞与组织状态以支持修复、再生和功能恢复，并验证其持久效果与适用边界？"
+    },
+    {
+      "id": "Q-071",
+      "theme_id": "T-024",
+      "millennium_id": "M-007",
+      "mode": "mixed",
+      "question_cn": "生命工程如何改变食物、材料和资源循环体系，并在生态影响、公平可及与地外生存约束下形成可持续价值？"
     }
   ]
 }

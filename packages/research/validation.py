@@ -50,8 +50,12 @@ def validate_research_data(root: Path = ROOT) -> None:
     canonical_questions = canonical_questions_doc.get("questions", [])
     question_ids = [item["id"] for item in canonical_questions]
     _ensure_unique(question_ids, "canonical question IDs")
-    if len(question_ids) != 63:
-        raise ResearchDataError(f"Canonical question registry must contain 63 questions, found {len(question_ids)}")
+    declared_count = canonical_questions_doc.get("question_count")
+    if type(declared_count) is not int or declared_count != len(question_ids):
+        raise ResearchDataError("Canonical question_count must match the registry length")
+    baseline_ids = {f"Q-{index:03d}" for index in range(1, 64)}
+    if not baseline_ids.issubset(question_ids):
+        raise ResearchDataError("Canonical question registry must preserve Q-001 through Q-063")
 
     question_schema = root / "schemas" / "question.schema.json"
     for item in legacy_questions:

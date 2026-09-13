@@ -19,6 +19,27 @@ def test_canonical_research_data_validates():
     validate_research_data(ROOT)
 
 
+def test_registry_count_mismatch_fails(tmp_path: Path):
+    root = _copy_research_fixture(tmp_path)
+    path = root / "research" / "canonical_question_refs.json"
+    document = json.loads(path.read_text())
+    document["question_count"] -= 1
+    path.write_text(json.dumps(document))
+    with pytest.raises(ResearchDataError, match="question_count"):
+        validate_research_data(root)
+
+
+def test_registry_cannot_remove_existing_question(tmp_path: Path):
+    root = _copy_research_fixture(tmp_path)
+    path = root / "research" / "canonical_question_refs.json"
+    document = json.loads(path.read_text())
+    document["questions"] = document["questions"][1:]
+    document["question_count"] = len(document["questions"])
+    path.write_text(json.dumps(document))
+    with pytest.raises(ResearchDataError, match="preserve Q-001"):
+        validate_research_data(root)
+
+
 def test_duplicate_question_id_fails(tmp_path: Path):
     root = _copy_research_fixture(tmp_path)
     path = root / "research" / "questions.json"

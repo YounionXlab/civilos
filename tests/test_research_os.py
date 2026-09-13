@@ -76,11 +76,12 @@ def _load_json(path: str):
         return json.load(handle)
 
 
-def test_canonical_question_registry_has_63_unique_ids():
+def test_canonical_question_registry_has_71_unique_ids():
     registry = _load_json("research/canonical_question_refs.json")
     ids = [item["id"] for item in registry["questions"]]
-    assert len(ids) == 63
-    assert len(set(ids)) == 63
+    assert len(ids) == registry["question_count"] == 71
+    assert len(set(ids)) == 71
+    assert {f"Q-{index:03d}" for index in range(1, 72)} == set(ids)
 
 
 def test_legacy_question_migration_is_complete():
