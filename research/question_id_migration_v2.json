@@ -1,0 +1,234 @@
+{
+  "schema_version": "2.0.0",
+  "migration_id": "MIG-QUESTION-ONTOLOGY-30-TO-63",
+  "effective_date": "2026-09-12",
+  "legacy_registry": {
+    "path": "research/questions.json",
+    "question_count": 30,
+    "id_namespace": "LEGACY-Q-*",
+    "status": "frozen-historical"
+  },
+  "canonical_registry": {
+    "authority": "YounionXlab/x-lab-omni",
+    "projection_path": "research/canonical_question_refs.json",
+    "question_count": 63,
+    "id_namespace": "Q-*"
+  },
+  "rules": [
+    "Active research objects MUST reference canonical Q-* identifiers.",
+    "Legacy source records remain frozen and are addressed as LEGACY-Q-* through this migration table.",
+    "A partial relation is a semantic routing decision, not an assertion of exact equivalence."
+  ],
+  "mappings": [
+    {
+      "legacy_id": "LEGACY-Q-001",
+      "canonical_id": "Q-001",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Human–AI capability boundary"
+    },
+    {
+      "legacy_id": "LEGACY-Q-002",
+      "canonical_id": "Q-007",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "AI-era learning priorities"
+    },
+    {
+      "legacy_id": "LEGACY-Q-003",
+      "canonical_id": "Q-047",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Decision quality and civilization intelligence"
+    },
+    {
+      "legacy_id": "LEGACY-Q-004",
+      "canonical_id": "Q-005",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Self-regulation and emotional capability"
+    },
+    {
+      "legacy_id": "LEGACY-Q-005",
+      "canonical_id": "Q-015",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "War and destructive conflict"
+    },
+    {
+      "legacy_id": "LEGACY-Q-006",
+      "canonical_id": "Q-022",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Institutional adaptation lag"
+    },
+    {
+      "legacy_id": "LEGACY-Q-007",
+      "canonical_id": "Q-061",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Trust and cooperation mechanisms"
+    },
+    {
+      "legacy_id": "LEGACY-Q-008",
+      "canonical_id": "Q-018",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Wealth, work and distribution"
+    },
+    {
+      "legacy_id": "LEGACY-Q-009",
+      "canonical_id": "Q-040",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "AI-majority society"
+    },
+    {
+      "legacy_id": "LEGACY-Q-010",
+      "canonical_id": "Q-025",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Planetary coordination"
+    },
+    {
+      "legacy_id": "LEGACY-Q-011",
+      "canonical_id": "Q-020",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Pandemic resilience"
+    },
+    {
+      "legacy_id": "LEGACY-Q-012",
+      "canonical_id": "Q-009",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Healthy lifespan extension"
+    },
+    {
+      "legacy_id": "LEGACY-Q-013",
+      "canonical_id": "Q-010",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Heritable intervention changes the definition of human"
+    },
+    {
+      "legacy_id": "LEGACY-Q-014",
+      "canonical_id": "Q-035",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Off-Earth biological and life-support autonomy"
+    },
+    {
+      "legacy_id": "LEGACY-Q-015",
+      "canonical_id": "Q-021",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Climate and systemic resilience"
+    },
+    {
+      "legacy_id": "LEGACY-Q-016",
+      "canonical_id": "Q-019",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Extreme water-management capability"
+    },
+    {
+      "legacy_id": "LEGACY-Q-017",
+      "canonical_id": "Q-031",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Ecological recovery and planetary repair"
+    },
+    {
+      "legacy_id": "LEGACY-Q-018",
+      "canonical_id": "Q-021",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Civilization after environmental collapse"
+    },
+    {
+      "legacy_id": "LEGACY-Q-019",
+      "canonical_id": "Q-030",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Clean energy within planetary resource coordination"
+    },
+    {
+      "legacy_id": "LEGACY-Q-020",
+      "canonical_id": "Q-056",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "AI-accelerated materials and scientific discovery"
+    },
+    {
+      "legacy_id": "LEGACY-Q-021",
+      "canonical_id": "Q-030",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Closed-loop industrial and resource systems"
+    },
+    {
+      "legacy_id": "LEGACY-Q-022",
+      "canonical_id": "Q-034",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Extreme-environment systems for long-duration off-Earth life"
+    },
+    {
+      "legacy_id": "LEGACY-Q-023",
+      "canonical_id": "Q-055",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "First Earth–Moon cross-body civilization system"
+    },
+    {
+      "legacy_id": "LEGACY-Q-024",
+      "canonical_id": "Q-036",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Sustainable Mars civilization node; Ares Alpha canonical mapping"
+    },
+    {
+      "legacy_id": "LEGACY-Q-025",
+      "canonical_id": "Q-037",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Interplanetary governance as a multi-planet threshold"
+    },
+    {
+      "legacy_id": "LEGACY-Q-026",
+      "canonical_id": "Q-055",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Space resource economy in the Earth–Moon system"
+    },
+    {
+      "legacy_id": "LEGACY-Q-027",
+      "canonical_id": "Q-053",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Civilization resilience and existential-risk governance"
+    },
+    {
+      "legacy_id": "LEGACY-Q-028",
+      "canonical_id": "Q-063",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Civilization-quality evaluation"
+    },
+    {
+      "legacy_id": "LEGACY-Q-029",
+      "canonical_id": "Q-037",
+      "relation": "close",
+      "confidence": 0.9,
+      "note": "Minimum viable multi-planet civilization"
+    },
+    {
+      "legacy_id": "LEGACY-Q-030",
+      "canonical_id": "Q-037",
+      "relation": "partial",
+      "confidence": 0.7,
+      "note": "Interstellar civilization extends the multi-planet threshold question"
+    }
+  ]
+}

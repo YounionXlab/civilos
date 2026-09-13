@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "sources": [
+    {
+      "id": "SRC-CLINICALTRIALS",
+      "name": "ClinicalTrials.gov",
+      "domains": ["health", "clinical", "medicine"],
+      "source_type": "registry",
+      "access": "open",
+      "homepage": "https://clinicaltrials.gov/",
+      "api_available": true,
+      "doi_support": false,
+      "notes": "Clinical study registry and results metadata; registration does not itself imply scientific validation."
+    },
+    {
+      "id": "SRC-GEO",
+      "name": "NCBI Gene Expression Omnibus",
+      "domains": ["genomics", "biology", "health"],
+      "source_type": "dataset_repository",
+      "access": "open",
+      "homepage": "https://www.ncbi.nlm.nih.gov/geo/",
+      "api_available": true,
+      "doi_support": false,
+      "notes": "Functional genomics datasets including gene expression and sequencing-derived studies."
+    },
+    {
+      "id": "SRC-GENBANK",
+      "name": "GenBank",
+      "domains": ["genomics", "biology"],
+      "source_type": "knowledge_base",
+      "access": "open",
+      "homepage": "https://www.ncbi.nlm.nih.gov/genbank/",
+      "api_available": true,
+      "doi_support": false,
+      "notes": "Public nucleotide sequence database."
+    },
+    {
+      "id": "SRC-OPENNEURO",
+      "name": "OpenNeuro",
+      "domains": ["neuroscience", "health", "cognition"],
+      "source_type": "dataset_repository",
+      "access": "open",
+      "homepage": "https://openneuro.org/",
+      "api_available": true,
+      "doi_support": true,
+      "notes": "Open neuroimaging and neurophysiology datasets."
+    },
+    {
+      "id": "SRC-ICPSR",
+      "name": "ICPSR",
+      "domains": ["society", "behavior", "governance", "health", "education"],
+      "source_type": "archive",
+      "access": "mixed",
+      "homepage": "https://www.icpsr.umich.edu/",
+      "api_available": false,
+      "doi_support": true,
+      "notes": "Large archive of social and behavioral science research data; some datasets have access restrictions."
+    },
+    {
+      "id": "SRC-PANGAEA",
+      "name": "PANGAEA",
+      "domains": ["climate", "earth", "environment", "ecology", "ocean"],
+      "source_type": "dataset_repository",
+      "access": "open",
+      "homepage": "https://www.pangaea.de/",
+      "api_available": true,
+      "doi_support": true,
+      "notes": "Earth and environmental science data publication platform."
+    },
+    {
+      "id": "SRC-GBIF",
+      "name": "GBIF",
+      "domains": ["biodiversity", "ecology", "environment"],
+      "source_type": "knowledge_base",
+      "access": "open",
+      "homepage": "https://www.gbif.org/",
+      "api_available": true,
+      "doi_support": true,
+      "notes": "Global biodiversity occurrence and related data infrastructure."
+    },
+    {
+      "id": "SRC-DRYAD",
+      "name": "Dryad",
+      "domains": ["cross-disciplinary"],
+      "source_type": "dataset_repository",
+      "access": "open",
+      "homepage": "https://datadryad.org/",
+      "api_available": true,
+      "doi_support": true,
+      "notes": "Cross-disciplinary research data repository with persistent identifiers."
+    },
+    {
+      "id": "SRC-ZENODO",
+      "name": "Zenodo",
+      "domains": ["cross-disciplinary", "software", "models"],
+      "source_type": "mixed",
+      "access": "open",
+      "homepage": "https://zenodo.org/",
+      "api_available": true,
+      "doi_support": true,
+      "notes": "General open research repository for data, software, models, documents, and artifacts."
+    }
+  ]
+}

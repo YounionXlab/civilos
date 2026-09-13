@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civilos.x-lab/schemas/evidence_reference.schema.json",
+  "title": "X-LAB Evidence Reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "source_type", "title", "provenance", "accessed_at"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^EVD-[0-9]{3,}$"},
+    "source_type": {"type": "string", "enum": ["paper", "dataset", "registry", "report", "software", "expert_review", "replication", "observation"]},
+    "title": {"type": "string", "minLength": 3},
+    "authors_or_owner": {"type": "array", "items": {"type": "string"}},
+    "year": {"type": ["integer", "null"], "minimum": 1800},
+    "doi": {"type": ["string", "null"]},
+    "url": {"type": ["string", "null"]},
+    "repository": {"type": ["string", "null"]},
+    "license": {"type": ["string", "null"]},
+    "provenance": {"type": "string", "minLength": 5},
+    "supports_questions": {"type": "array", "items": {"type": "string", "pattern": "^Q-[0-9]{3}$"}, "uniqueItems": true},
+    "supports_experiments": {"type": "array", "items": {"type": "string", "pattern": "^EXP-[A-Z]+-[0-9]{3}$"}, "uniqueItems": true},
+    "notes": {"type": "string"},
+    "accessed_at": {"type": "string", "format": "date-time"},
+    "schema_version": {"type": "string"}
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "run_id": "RUN-7a5bb17c5cf04150a235237a9d74a068",
+  "experiment_id": "EXP-CIV-001",
+  "scenario": "baseline",
+  "status": "completed",
+  "observations": 365,
+  "runtime_interventions": [],
+  "report": {
+    "experiment": {
+      "id": "EXP-CIV-001",
+      "title": "Ares Alpha",
+      "questions": [
+        "Q-024"
+      ],
+      "hypothesis": "A Mars settlement becomes civilization-like when material resilience, technological capacity, citizen specialization, collective decision quality, and historical memory reinforce one another over time.",
+      "world_seed": "ARES-ALPHA-001",
+      "random_seed": 20260707,
+      "observation_window": {
+        "value": 365,
+        "unit": "sol"
+      }
+    },
+    "final_state": {
+      "population": 20,
+      "energy": 100.0,
+      "water": 100.0,
+      "food": 100.0,
+      "technology": 100.0,
+      "cq": 1.0
+    },
+    "metrics": {
+      "population": {"start": 20, "end": 20, "min": 20, "max": 20, "average": 20, "direction": "flat"},
+      "energy": {"start": 82.8, "end": 100.0, "min": 82.8, "max": 100.0, "average": 98.7441, "direction": "up"},
+      "water": {"start": 79.1, "end": 100.0, "min": 79.1, "max": 100.0, "average": 98.1986, "direction": "up"},
+      "food": {"start": 91.6, "end": 100.0, "min": 91.6, "max": 100.0, "average": 99.5356, "direction": "up"},
+      "technology": {"start": 34.89, "end": 100.0, "min": 34.89, "max": 100.0, "average": 82.7041, "direction": "up"},
+      "cq": {"start": 0.42, "end": 1.0, "min": 0.42, "max": 1.0, "average": 0.8465, "direction": "up"}
+    },
+    "significant_events": [
+      {"title": "Botanists harvested food.", "count": 73},
+      {"title": "Dust storm reduced solar efficiency.", "count": 73},
+      {"title": "Fusion reactor efficiency increased.", "count": 73},
+      {"title": "Water recycling cycle completed.", "count": 73},
+      {"title": "Citizen Nora Jensen proposed an operational upgrade.", "count": 4}
+    ],
+    "success_signals": [
+      {"signal": "The colony remains viable through the full observation window without deterministic collapse.", "met": true},
+      {"signal": "Citizens develop differentiated histories instead of remaining interchangeable records.", "met": true},
+      {"signal": "Major events leave measurable traces in both state and memory.", "met": true},
+      {"signal": "The colony can recover from at least some adverse events rather than only decline.", "met": true},
+      {"signal": "The chronicle explains meaningful state changes in human-readable form.", "met": true}
+    ],
+    "failure_signals": [
+      {"signal": "Resource collapse is mathematically inevitable under healthy initial conditions.", "met": false},
+      {"signal": "Population changes occur without causal events or explanation.", "met": false},
+      {"signal": "Citizen professions do not materially affect outcomes.", "met": false},
+      {"signal": "History diverges from actual simulation state.", "met": false},
+      {"signal": "Repeated runs with the same seed produce inconsistent outcomes without an explicit source of nondeterminism.", "met": false}
+    ],
+    "result": "supported",
+    "insight": "Ares Alpha remained viable across the observation window with a resource floor of 79.10; technology changed by 65.11 and CQ by 0.58, supporting the hypothesis that material resilience and coordinated capability can reinforce one another."
+  }
+}
